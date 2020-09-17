@@ -1,0 +1,25 @@
+{
+  "presets": [
+    ["@babel/preset-env", {"useBuiltIns": "usage", "corejs": 2}],
+    "@babel/preset-react"
+  ],
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": "./src",
+        "alias": {
+          "~api": "./src/api",
+          "~root": "./src/root",
+          "~utils": "./src/utils",
+          "~pages": "./src/pages",
+          "~redux": "./src/redux",
+          "~styles": "./src/styles",
+          "~assets": "./public/assets",
+          "~components": "./src/components"
+        },
+        "extensions": [".js", ".jsx", ".ts", ".tsx", ".es", ".es6", ".mjs"]
+      }
+    ]
+  ]
+}

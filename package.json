@@ -1,0 +1,96 @@
+{
+  "name": "diversity-atlas",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --config ./webpack/webpack.dev.js --mode development --open --hot",
+    "build": "cross-env NODE_ENV=production webpack -p --config ./webpack/webpack.prod.js",
+    "lint:eslint": "eslint . && echo \"No lint errors!\" && exit 0",
+    "lint:eslint:fix": "eslint . --fix && echo \"Lint errors fixed!\" && exit 0",
+    "format": "prettier \"**/*.{md,mdx,yml,css,scss} \" --write",
+    "test": "jest && echo \"ALL TESTS PASSED!\" && exit 0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": "eslint --cache --fix --ignore-path .gitignore",
+    "*.{js,jsx,ts,tsx,css,md}": "prettier --write"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.4.0",
+    "axios": "^0.20.0",
+    "bootstrap": "^4.5.2",
+    "i18next": "^19.7.0",
+    "i18next-browser-languagedetector": "^6.0.1",
+    "metismenujs": "^1.2.1",
+    "path-to-regexp": "^6.1.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-helmet": "^6.1.0",
+    "react-i18next": "^11.7.2",
+    "react-redux": "^7.2.1",
+    "react-router-dom": "^5.2.0",
+    "reactstrap": "^8.5.1",
+    "simplebar-react": "^3.0.0-beta.5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@babel/polyfill": "^7.11.5",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-react": "^7.10.4",
+    "@babel/register": "^7.11.5",
+    "@testing-library/react": "^11.0.4",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^26.3.0",
+    "babel-loader": "^8.1.0",
+    "babel-plugin-module-resolver": "^4.0.0",
+    "commitizen": "^4.2.1",
+    "compression-webpack-plugin": "^6.0.0",
+    "core-js": "2",
+    "cross-env": "^7.0.2",
+    "css-loader": "^4.3.0",
+    "dotenv-webpack": "^2.0.0",
+    "eslint": "^7.9.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-import-resolver-babel-module": "^5.1.2",
+    "eslint-plugin-compat": "^3.8.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-module-resolver": "^1.0.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.20.6",
+    "eslint-plugin-react-hooks": "^4.1.2",
+    "html-webpack-plugin": "^4.4.1",
+    "husky": "^4.3.0",
+    "jest": "^26.4.2",
+    "jest-dom": "^4.0.0",
+    "lint-staged": "^10.3.0",
+    "node-sass": "^4.14.1",
+    "optimize-css-assets-webpack-plugin": "^5.0.4",
+    "prettier": "^2.1.1",
+    "react-test-renderer": "^16.13.1",
+    "sass-loader": "^10.0.2",
+    "style-loader": "^1.2.1",
+    "ts-loader": "^8.0.3",
+    "typescript": "^4.0.2",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "url-loader": "^4.1.0",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^5.1.4",
+    "webpackbar": "^4.0.0"
+  }
+}
