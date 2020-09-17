@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --config ./webpack/webpack.dev.js --mode development --open --hot",
+    "start": "webpack-dev-server --config ./webpack/webpack.dev.js --hot",
     "build": "cross-env NODE_ENV=production webpack -p --config ./webpack/webpack.prod.js",
     "lint:eslint": "eslint . && echo \"No lint errors!\" && exit 0",
     "lint:eslint:fix": "eslint . --fix && echo \"Lint errors fixed!\" && exit 0",
