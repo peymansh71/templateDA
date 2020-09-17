@@ -21,7 +21,7 @@
       "~redux/*": ["./src/redux/*"],
       "~styles": ["./src/styles/*"],
       "~assets": ["./public/assets/*"],
-      "~components/*": ["./src/components/*"],
+      "~components/*": ["./src/components/*"]
     }
   },
   "exclude": ["node_modules"],
