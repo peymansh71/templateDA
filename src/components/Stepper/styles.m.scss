@@ -1,0 +1,70 @@
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~styles/_variables.scss';
+
+.stepper {
+  position: relative;
+
+  &__divider {
+    top: 21px;
+    height: 2px;
+    position: absolute;
+    z-index: 5;
+
+    &--active {
+      left: calc(100% / 14);
+      width: calc(var(--step) * 100% / 7);
+      background-color: $secondary-500;
+    }
+
+    &--disabled {
+      right: calc(100% / 14);
+      width: calc((6 - var(--step)) * 100% / 7);
+      background-color: $gray-600;
+    }
+  }
+
+  &__step {
+    position: relative;
+    width: calc(100% / 7);
+    z-index: 10;
+  }
+
+  &__icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    transition: background-color 200ms ease-in-out;
+
+    i,
+    span {
+      font-size: 1.5rem;
+    }
+
+    &--completed {
+      color: $white;
+      background-color: $secondary-500;
+      border: solid 1px $secondary-500;
+    }
+
+    &--active {
+      color: $secondary-500;
+      background-color: $white;
+      border: solid 1px $secondary-500;
+    }
+
+    &--disabled {
+      color: $gray-600;
+      background-color: $white;
+      border: solid 1px $gray-600;
+    }
+  }
+
+  &__label {
+    font-size: 0.7rem;
+
+    &--active {
+      color: $secondary-500;
+    }
+  }
+}

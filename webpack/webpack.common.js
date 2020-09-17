@@ -46,7 +46,10 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
-    alias: {assets: path.resolve(process.cwd(), './public/assets')},
+    alias: {
+      assets: path.resolve(process.cwd(), './public/assets'),
+      styles: path.resolve(process.cwd(), './src/styles'),
+    },
   },
   plugins: [
     new HtmlWebPackPlugin({

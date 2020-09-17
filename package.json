@@ -30,6 +30,7 @@
     "@reduxjs/toolkit": "^1.4.0",
     "axios": "^0.20.0",
     "bootstrap": "^4.5.2",
+    "classnames": "^2.2.6",
     "i18next": "^19.7.0",
     "i18next-browser-languagedetector": "^6.0.1",
     "metismenujs": "^1.2.1",
@@ -40,6 +41,7 @@
     "react-i18next": "^11.7.2",
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",
+    "react-select": "^3.1.0",
     "reactstrap": "^8.5.1",
     "simplebar-react": "^3.0.0-beta.5"
   },

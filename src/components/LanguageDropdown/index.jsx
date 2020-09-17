@@ -33,11 +33,11 @@ const LanguageDropdown = () => {
       toggle={() => setMenu(!menu)}
       className='d-inline-block'
     >
-      <DropdownToggle className='btn header-item waves-effect' tag='button'>
+      <DropdownToggle className='btn waves-effect' tag='button'>
         <img src={flag} alt='flag' height='16' className='mr-1' />
-        <span className='align-middle'>{lng}</span>
+        <span className='align-middle text-light'>{lng}</span>
       </DropdownToggle>
-      <DropdownMenu className='language-switch' right>
+      <DropdownMenu right>
         {locales.map(locale => (
           <DropdownItem
             tag='a'

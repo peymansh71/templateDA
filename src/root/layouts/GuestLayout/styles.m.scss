@@ -1,0 +1,23 @@
+.layout {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-image: url('~assets/images/bg/DA-form-bg-image.jpg');
+
+  &__header {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+  }
+
+  &__logo {
+    width: 150px;
+  }
+
+  &__langs {
+    border: solid 1px var(--white);
+    border-radius: 2px;
+  }
+}

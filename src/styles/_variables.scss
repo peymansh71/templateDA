@@ -987,8 +987,8 @@ $card-border-width: 0;
 $card-border-radius: $border-radius;
 $card-border-color: $gray-300;
 $card-inner-border-radius: calc(#{$card-border-radius} - #{$card-border-width});
-$card-cap-bg: $gray-300;
-$card-cap-color: null;
+$card-cap-bg: $primary-600;
+$card-cap-color:$gray-500;
 $card-color: null;
 $card-bg: $white;
 

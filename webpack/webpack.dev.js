@@ -15,7 +15,6 @@ module.exports = merge(common, {
     hot: true,
     port: PORT,
     noInfo: true,
-    compress: true,
     historyApiFallback: true,
     clientLogLevel: 'silent',
     contentBase: path.join(process.cwd(), 'dist'),

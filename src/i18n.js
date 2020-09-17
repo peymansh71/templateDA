@@ -22,7 +22,7 @@ const resources = {
   sp: {
     translation: translationSP,
   },
-  eng: {
+  en: {
     translation: translationENG,
   },
 }

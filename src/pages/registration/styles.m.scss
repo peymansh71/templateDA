@@ -1,0 +1,13 @@
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~styles/_variables.scss';
+
+.registration {
+  overflow: hidden;
+  border-radius: 5px;
+  border: solid 1px $gray-500;
+  
+  &__body {
+    padding: 20px;
+  }
+}
