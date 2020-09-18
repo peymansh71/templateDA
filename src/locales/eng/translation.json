@@ -218,6 +218,7 @@
   "structure": "Structure",
   "country_birth": "Country of Birth",
   "ethinicity_appearance": "Ethinicity & Appearance",
+  "pass_hint": "Eight or more characters, with at least one lowercase and one uppercase letter.",
   "registration_type": "type of the registration is not set",
   "registration_whats_next": "Registration. <u>What\"s next?</u>",
   "representing": "representing",

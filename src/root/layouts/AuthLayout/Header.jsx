@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
 // import {Dropdown, DropdownToggle, DropdownMenu, Row, Col} from 'reactstrap'
 
-import LanguageDropdown from '~components/LanguageDropdown'
+import LanguageDropdown from '~components/common/LanguageDropdown'
 
 import layoutsSlice from '~redux/slices/layouts'
 

@@ -12,10 +12,11 @@ import {
 } from 'reactstrap'
 
 // components
-import LanguageDropdown from '~components/LanguageDropdown'
+import LanguageDropdown from '~components/common/LanguageDropdown'
 
 // assets
-import logo from '~assets/images/logo/AA_logo_black_horizontal.png'
+import logo from '~assets/images/logo/AA_logo_icon_white.png'
+import logoHorizontal from '~assets/images/logo/AA_logo_black_horizontal.png'
 
 import styles from './styles.m.scss'
 
@@ -25,7 +26,16 @@ const GuestLayout = ({children}) => (
   >
     <Navbar dark expand className={styles.layout__header}>
       <NavbarBrand href='/' className='mr-auto'>
-        <img className={styles.layout__logo} alt='diversity-logo' src={logo} />
+        <img
+          className={`${styles.layout__logoH} d-none d-md-block`}
+          alt='diversity-logo'
+          src={logoHorizontal}
+        />
+        <img
+          className={`${styles.layout__logo} d-md-none`}
+          alt='diversity-logo'
+          src={logo}
+        />
       </NavbarBrand>
       <Nav navbar>
         <UncontrolledDropdown nav inNavbar>

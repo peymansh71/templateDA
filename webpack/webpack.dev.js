@@ -1,6 +1,7 @@
 const path = require('path')
 const {merge} = require('webpack-merge')
 const WebpackBar = require('webpackbar')
+
 const common = require('./webpack.common.js')
 
 const PORT = 3000

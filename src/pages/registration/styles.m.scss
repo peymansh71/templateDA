@@ -6,8 +6,13 @@
   overflow: hidden;
   border-radius: 5px;
   border: solid 1px $gray-500;
-  
-  &__body {
-    padding: 20px;
+}
+
+.body {
+  padding: 20px;
+
+  &__prev {
+    color: $gray-700;
+    border-color: $gray-600;
   }
 }

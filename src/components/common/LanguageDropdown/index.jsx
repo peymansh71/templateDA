@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {Dropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap'
 
-import i18n from '../../i18n'
+import i18n from '../../../i18n'
 
 // flags
 import england from '~assets/images/flags/en.png'
