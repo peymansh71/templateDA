@@ -16,14 +16,17 @@ const FormCheck = ({
 
   return (
     <FormGroup>
-      <Label for={name}>{t(label)}</Label>
-      <div id={name}>
+      <Label for={name}>{label ? t(label) : ''}</Label>
+      <div>
         {options.map(option => (
           <CustomInput
+            id={name}
             key={option.name}
             name={option.name}
             type='checkbox'
-            label={t(option.label)}
+            label={option.label}
+            valid={validity}
+            invalid={validity === false}
             {...props}
           />
         ))}

@@ -30,7 +30,7 @@ const FormInput = ({
         id={name}
         name={name}
         type={type ?? name}
-        valid={validity === true}
+        valid={validity}
         invalid={validity === false}
         placeholder={t(placeholder ?? label ?? name)}
         {...props}

@@ -1,12 +1,8 @@
-import React, {
-  useRef,
-  useEffect,
-  useState,
-  forwardRef,
-  useCallback,
-} from 'react'
+import React, {useRef, useState, useEffect, useCallback, useMemo} from 'react'
+import {Link} from 'react-router-dom'
+import {useTranslation} from 'react-i18next'
 
-import {Row, Col, Container} from 'reactstrap'
+import {Row, Col, Container, CustomInput, Button} from 'reactstrap'
 
 import Input from '~components/form/Input'
 import Select from '~components/form/Select'
@@ -14,14 +10,24 @@ import Password from '~components/form/Password'
 
 import {validateEmail, validatePass} from '~utils'
 
-const initialState = {org: null, country: null, email: null, password: null}
+const initialState = {
+  org: null,
+  country: null,
+  email: null,
+  password: null,
+  agreement: null,
+}
 
-const Organization = (props, submitRef) => {
+const Organization = ({goNext, setHeight, isActive}) => {
+  const {t} = useTranslation()
+
   const formRef = useRef(null)
 
   const [validity, setValidity] = useState(initialState)
 
-  const onSubmit = useCallback(() => {
+  const [agreement, setAgreement] = useState(false)
+
+  const submit = useCallback(() => {
     const data = new FormData(formRef.current)
 
     const state = {...initialState}
@@ -38,6 +44,9 @@ const Organization = (props, submitRef) => {
     if (!validatePass(data.get('password'))) state.password = false
     else state.password = true
 
+    if (!data.get('privacyPolicy')) state.agreement = false
+    else state.agreement = true
+
     const status = Object.values(state).reduce((a, b) => a && b)
 
     if (status) {
@@ -49,9 +58,28 @@ const Organization = (props, submitRef) => {
     return false
   })
 
-  useEffect(() => {
-    submitRef.current = onSubmit
+  const onClickNext = useCallback(() => {
+    const status = submit()
+    if (status) goNext()
   }, [])
+
+  const onChangeAgreement = useCallback(e => setAgreement(e.target.checked), [])
+
+  const AgreementLabel = useMemo(
+    () => (
+      <>
+        {t('read&agree')}
+        <Link to='/privacy-policy'>{t('read&agree')}</Link>
+        {t('and')}
+        <Link to='/code-of-conduct'>{t('codeConduct')}</Link>
+      </>
+    ),
+    []
+  )
+
+  useEffect(() => {
+    if (isActive) setHeight(formRef.current.offsetHeight)
+  }, [isActive, validity])
 
   const form = [
     {
@@ -99,18 +127,37 @@ const Organization = (props, submitRef) => {
   ]
 
   return (
-    <form ref={formRef}>
-      <Container fluid>
-        <Row className='mt-3'>
-          {form.map(item => (
-            <Col sm='12' md='6' key={item.props.name}>
-              <item.tag {...item.props} />
-            </Col>
-          ))}
-        </Row>
-      </Container>
-    </form>
+    <div>
+      <form ref={formRef}>
+        <Container fluid>
+          <Row className='mt-3'>
+            {form.map(item => (
+              <Col sm='12' md='6' key={item.props.name}>
+                <item.tag {...item.props} />
+              </Col>
+            ))}
+          </Row>
+        </Container>
+        <div className='mt-5 d-flex justify-content-between align-items-start px-3'>
+          <CustomInput
+            type='checkbox'
+            id='privacyPolicy'
+            name='privacyPolicy'
+            checked={agreement}
+            label={AgreementLabel}
+            onChange={onChangeAgreement}
+            invalid={validity.agreement === false}
+          />
+          <div className='d-flex justify-content-between'>
+            <Button className='ml-3' onClick={onClickNext}>
+              {t('next')}
+              <i className='fa fa-chevron-right ml-2' />
+            </Button>
+          </div>
+        </div>
+      </form>
+    </div>
   )
 }
 
-export default forwardRef(Organization)
+export default Organization

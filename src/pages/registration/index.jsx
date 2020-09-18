@@ -1,4 +1,4 @@
-import React, {useState, useRef} from 'react'
+import React, {useState, useRef, useMemo, useCallback} from 'react'
 import {Helmet} from 'react-helmet'
 import {Link} from 'react-router-dom'
 import {useTranslation} from 'react-i18next'
@@ -7,15 +7,13 @@ import {
   Row,
   Col,
   Card,
-  Button,
   CardBody,
   Container,
   CardHeader,
   CardFooter,
-  CustomInput,
 } from 'reactstrap'
 import Stepper from '~components/common/Stepper'
-import Organization from '~components/auth/registration/Organization'
+import {Organization, Structure, Personal} from '~components/auth/registration'
 
 import s from './styles.m.scss'
 
@@ -59,53 +57,46 @@ const Header = () => {
 }
 
 const Body = () => {
-  const {t} = useTranslation()
-
-  const organizationRef = useRef(null)
-
   const [active, setActive] = useState(0)
-  const [agreement, setAgreement] = useState(false)
 
-  const next = () => {
-    if (active < 6) {
-      const status = organizationRef.current()
-      if (status) setActive(active + 1)
-    }
+  const slidesWrapperRef = useRef(null)
+
+  const setHeight = useCallback(height => {
+    slidesWrapperRef.current.style.height = `${height + 16}px`
+  }, [])
+
+  const length = steps.length - 1
+
+  const goNext = () => {
+    setActive(active => (active < length ? active + 1 : length))
   }
-  const prev = () => setActive(active > 0 ? active - 1 : 0)
+  const goPrev = () => setActive(active => (active > 0 ? active - 1 : 0))
 
-  console.log(2222222, agreement)
+  const slides = useMemo(
+    () => [
+      {component: Organization, props: {goNext, setHeight}},
+      {component: Structure, props: {goNext, goPrev, setHeight}},
+      {component: Personal, props: {goNext, goPrev, setHeight}},
+    ],
+    []
+  )
+
   return (
     <CardBody className={s.body}>
       <Stepper steps={steps} active={active} />
-      <Organization ref={organizationRef} />
-      <div className='mt-5 d-flex justify-content-between align-items-start px-3'>
-        <CustomInput
-          type='checkbox'
-          id='privacyPolicy'
-          name='privacyPolicy'
-          checked={agreement}
-          onChange={e => setAgreement(e.target.checked)}
-          label={
-            <span className='custom-control-label' htmlFor='privacyPolicy'>
-              {t('read&agree')}
-              <Link to='/privacy-policy'>{t('read&agree')}</Link>
-              {t('and')}
-              <Link to='/code-of-conduct'>{t('codeConduct')}</Link>
-            </span>
-          }
-        />
-        <div className='d-flex justify-content-between'>
-          {active > 0 && (
-            <Button className={s.body__prev} color='dark' onClick={prev}>
-              <i className='fa fa-chevron-left mr-2' />
-              {t('previous')}
-            </Button>
-          )}
-          <Button className='ml-3' onClick={next}>
-            {active > 0 ? t('survey') : t('next')}
-            <i className='fa fa-chevron-right ml-2' />
-          </Button>
+      <div className='overflow-hidden w-100'>
+        <div
+          ref={slidesWrapperRef}
+          style={{'--step': active}}
+          className={`${s.body__slides} d-flex`}
+        >
+          {slides.map((slide, index) => (
+            <slide.component
+              isActive={index === active}
+              key={slide.component.name}
+              {...slide.props}
+            />
+          ))}
         </div>
       </div>
     </CardBody>

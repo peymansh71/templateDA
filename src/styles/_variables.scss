@@ -291,7 +291,7 @@ $body-color: $gray-700;
 //
 // Style anchor elements.
 
-$link-color: theme-color('primary');
+$link-color: theme-color('secondary');
 $link-decoration: none;
 $link-hover-color: darken($link-color, 15%);
 $link-hover-decoration: underline;
@@ -382,7 +382,7 @@ $embed-responsive-aspect-ratios: join(
 // Font, line-height, and color for body text, headings, and more.
 
 // stylelint-disable value-keyword-case
-$font-family-sans-serif: 'Poppins', sans-serif;
+$font-family-sans-serif: 'Roboto', sans-serif;
 $font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
   'Liberation Mono', 'Courier New', monospace;
 $font-family-base: $font-family-sans-serif;
@@ -654,7 +654,7 @@ $custom-control-indicator-disabled-bg: $input-disabled-bg;
 $custom-control-label-disabled-color: $gray-600;
 
 $custom-control-indicator-checked-color: $component-active-color;
-$custom-control-indicator-checked-bg: $primary;
+$custom-control-indicator-checked-bg: theme-color('secondary');
 $custom-control-indicator-checked-disabled-bg: rgba(
   theme-color('primary'),
   0.5

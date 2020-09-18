@@ -1,5 +1,6 @@
 import React from 'react'
 import {useTranslation} from 'react-i18next'
+import names from 'classnames'
 
 import Select from 'react-select'
 
@@ -20,19 +21,19 @@ const theme = theme => ({
 })
 
 const FormSelect = props => {
-  const {label, name, required} = props
+  const {label, name, required, validationMessage, validity} = props
   const {t} = useTranslation()
 
   const colourStyles = {
     control: styles => {
-      if (props.validity === false) styles.borderColor = 'var(--danger)'
-      if (props.validity === true) styles.borderColor = 'var(--success)'
+      if (validity === false) styles.borderColor = 'var(--danger)'
+      if (validity) styles.borderColor = 'var(--success)'
       return styles
     },
   }
 
   return (
-    <>
+    <div className='mb-3'>
       <span className='font-weight-bold'>{`${t(label ?? name)} :`}</span>
       {required && <span className='text-danger font-weight-bold'> *</span>}
       <Select
@@ -42,7 +43,14 @@ const FormSelect = props => {
         options={options}
         {...props}
       />
-    </>
+      {!!validationMessage && (
+        <span
+          className={names('invalid-feedback', {'d-block': validity === false})}
+        >
+          {t(validationMessage)}
+        </span>
+      )}
+    </div>
   )
 }
 
