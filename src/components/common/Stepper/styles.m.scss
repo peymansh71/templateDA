@@ -10,7 +10,7 @@
     &--active {
       left: calc(100% / 14);
       width: calc(var(--step) * 100% / 7);
-      background-color: $secondary-500;
+      background-color: $secondary-600;
     }
 
     &--disabled {
@@ -39,14 +39,14 @@
 
     &--completed {
       color: $white;
-      background-color: $secondary-500;
-      border: solid 1px $secondary-500;
+      background-color: $secondary-600;
+      border: solid 1px $secondary-600;
     }
 
     &--active {
-      color: $secondary-500;
+      color: $secondary-600;
       background-color: $white;
-      border: solid 1px $secondary-500;
+      border: solid 1px $secondary-600;
     }
 
     &--disabled {

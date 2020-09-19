@@ -1,5 +1,6 @@
 import React, {useRef, useState, useEffect, useCallback} from 'react'
 import {useTranslation} from 'react-i18next'
+import names from 'classnames'
 
 import {Row, Col, Container, Button} from 'reactstrap'
 
@@ -29,7 +30,7 @@ export const Structure = ({goNext, goPrev, setHeight, isActive}) => {
     }
 
     return false
-  })
+  }, [])
 
   const onClickNext = useCallback(() => {
     const status = submit()
@@ -51,7 +52,7 @@ export const Structure = ({goNext, goPrev, setHeight, isActive}) => {
   ]
 
   return (
-    <div>
+    <div className={names(s.section, {[s['section--active']]: isActive})}>
       <form ref={formRef}>
         <Container fluid>
           <div className='mt-3'>{t('tier_levels_explanation')}</div>

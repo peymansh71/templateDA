@@ -5,10 +5,11 @@ import names from 'classnames'
 import styles from './styles.m.scss'
 
 const Stepper = ({steps, active}) => {
+  const maxLevel = active > steps.length - 1 ? steps.length - 1 : active
   return (
     <div
       className={`${styles.stepper} d-flex justify-content-between`}
-      style={{'--step': active}}
+      style={{'--step': maxLevel}}
     >
       <div
         className={`${styles.stepper__divider} ${styles['stepper__divider--active']}`}

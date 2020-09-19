@@ -1,5 +1,6 @@
 import React, {useRef, useState, useEffect, useCallback} from 'react'
 import {useTranslation} from 'react-i18next'
+import names from 'classnames'
 
 import {Row, Col, Container, CustomInput, Button} from 'reactstrap'
 
@@ -29,16 +30,16 @@ const Personal = ({goNext, goPrev, setHeight, isActive}) => {
 
     const state = {...initialState}
 
-    if (!data.get('firstName').trim()) state.firstName = false
+    if (!data.get('firstName')?.trim() && !anonymous) state.firstName = false
     else state.firstName = true
 
-    if (!data.get('lastName').trim()) state.lastName = false
+    if (!data.get('lastName')?.trim() && !anonymous) state.lastName = false
     else state.lastName = true
 
-    if (!data.get('birthYear')) state.birthYear = false
+    if (!data.get('birthYear').trim()) state.birthYear = false
     else state.birthYear = true
 
-    if (!data.get('gender')) state.gender = false
+    if (!data.get('gender').trim()) state.gender = false
     else state.gender = true
 
     const status = Object.values(state).reduce((a, b) => a && b)
@@ -50,12 +51,12 @@ const Personal = ({goNext, goPrev, setHeight, isActive}) => {
 
     setValidity(state)
     return false
-  })
+  }, [anonymous])
 
   const onClickNext = useCallback(() => {
     const status = submit()
     if (status) goNext()
-  }, [])
+  }, [anonymous])
 
   const onClickPrev = useCallback(goPrev, [])
 
@@ -73,6 +74,7 @@ const Personal = ({goNext, goPrev, setHeight, isActive}) => {
         name: 'firstName',
         type: 'text',
         required: true,
+        disabled: anonymous,
         validity: validity.firstName,
         validationMessage: 'first_name_required',
       },
@@ -84,6 +86,7 @@ const Personal = ({goNext, goPrev, setHeight, isActive}) => {
         name: 'lastName',
         type: 'text',
         required: true,
+        disabled: anonymous,
         validity: validity.lastName,
         validationMessage: 'last_name_required',
       },
@@ -145,7 +148,7 @@ const Personal = ({goNext, goPrev, setHeight, isActive}) => {
   ]
 
   return (
-    <div>
+    <div className={names(s.section, {[s['section--active']]: isActive})}>
       <form ref={formRef}>
         <Container fluid>
           <Row className='mt-3'>

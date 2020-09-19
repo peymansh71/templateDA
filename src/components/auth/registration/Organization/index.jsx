@@ -1,6 +1,7 @@
 import React, {useRef, useState, useEffect, useCallback, useMemo} from 'react'
 import {Link} from 'react-router-dom'
 import {useTranslation} from 'react-i18next'
+import names from 'classnames'
 
 import {Row, Col, Container, CustomInput, Button} from 'reactstrap'
 
@@ -9,6 +10,8 @@ import Select from '~components/form/Select'
 import Password from '~components/form/Password'
 
 import {validateEmail, validatePass} from '~utils'
+
+import s from './styles.m.scss'
 
 const initialState = {
   org: null,
@@ -56,7 +59,7 @@ const Organization = ({goNext, setHeight, isActive}) => {
 
     setValidity(state)
     return false
-  })
+  }, [])
 
   const onClickNext = useCallback(() => {
     const status = submit()
@@ -127,7 +130,7 @@ const Organization = ({goNext, setHeight, isActive}) => {
   ]
 
   return (
-    <div>
+    <div className={names(s.section, {[s['section--active']]: isActive})}>
       <form ref={formRef}>
         <Container fluid>
           <Row className='mt-3'>

@@ -1,0 +1,25 @@
+.section {
+  opacity: 0;
+  //transition: opacity 50ms ease-in-out;
+
+  &--active {
+    opacity: 1;
+    transition: opacity 50ms 250ms ease-in-out;
+  }
+
+  &__container {
+    position: relative;
+    z-index: 100;
+  }
+}
+
+.success {
+  margin-top: 1px;
+  &__image {
+    width: 100%;
+    object-fit: contain;
+  }
+  h1 {
+    font-size: 36px;
+  }
+}

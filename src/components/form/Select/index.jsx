@@ -21,20 +21,26 @@ const theme = theme => ({
 })
 
 const FormSelect = props => {
-  const {label, name, required, validationMessage, validity} = props
+  const {label, labelIcon, name, required, validationMessage, validity} = props
   const {t} = useTranslation()
 
   const colourStyles = {
     control: styles => {
-      if (validity === false) styles.borderColor = 'var(--danger)'
-      if (validity) styles.borderColor = 'var(--success)'
+      if (validity === false) {
+        styles.borderColor = 'var(--danger)'
+        styles['&:hover'].borderColor = 'var(--danger)'
+      } else if (validity) {
+        styles.borderColor = 'var(--success)'
+        styles['&:hover'].borderColor = 'var(--danger)'
+      }
       return styles
     },
   }
 
   return (
     <div className='mb-3'>
-      <span className='font-weight-bold'>{`${t(label ?? name)} :`}</span>
+      {!!labelIcon && <i className={`fa ${labelIcon}`} />}
+      <span className='font-weight-bold'>{` ${t(label ?? name)} :`}</span>
       {required && <span className='text-danger font-weight-bold'> *</span>}
       <Select
         className='mt-2'

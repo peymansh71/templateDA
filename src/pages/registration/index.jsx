@@ -13,7 +13,16 @@ import {
   CardFooter,
 } from 'reactstrap'
 import Stepper from '~components/common/Stepper'
-import {Organization, Structure, Personal} from '~components/auth/registration'
+import {
+  Organization,
+  Structure,
+  Personal,
+  CountryBirth,
+  Ethnicity,
+  Language,
+  Worldview,
+  Success,
+} from '~components/auth/registration'
 
 import s from './styles.m.scss'
 
@@ -22,7 +31,7 @@ const steps = [
   'structure',
   'personal',
   'country_birth',
-  'ethinicity_appearance',
+  'ethnicity_appearance',
   'language',
   'worldview',
 ]
@@ -62,10 +71,10 @@ const Body = () => {
   const slidesWrapperRef = useRef(null)
 
   const setHeight = useCallback(height => {
-    slidesWrapperRef.current.style.height = `${height + 16}px`
+    slidesWrapperRef.current.style.cssText += `;--height:${height}px;`
   }, [])
 
-  const length = steps.length - 1
+  const {length} = steps
 
   const goNext = () => {
     setActive(active => (active < length ? active + 1 : length))
@@ -77,6 +86,11 @@ const Body = () => {
       {component: Organization, props: {goNext, setHeight}},
       {component: Structure, props: {goNext, goPrev, setHeight}},
       {component: Personal, props: {goNext, goPrev, setHeight}},
+      {component: CountryBirth, props: {goNext, goPrev, setHeight}},
+      {component: Ethnicity, props: {goNext, goPrev, setHeight}},
+      {component: Language, props: {goNext, goPrev, setHeight}},
+      {component: Worldview, props: {goNext, goPrev, setHeight}},
+      {component: Success, props: {setHeight}},
     ],
     []
   )
@@ -84,7 +98,7 @@ const Body = () => {
   return (
     <CardBody className={s.body}>
       <Stepper steps={steps} active={active} />
-      <div className='overflow-hidden w-100'>
+      <div className='w-100'>
         <div
           ref={slidesWrapperRef}
           style={{'--step': active}}

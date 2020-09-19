@@ -12,6 +12,7 @@ const FormInput = ({
   label,
   hint,
   required,
+  disabled,
   validity,
   placeholder,
   validationMessage,
@@ -19,6 +20,8 @@ const FormInput = ({
   ...props
 }) => {
   const {t} = useTranslation()
+
+  if (disabled) validity = null
 
   return (
     <FormGroup className={s.input}>
@@ -31,6 +34,7 @@ const FormInput = ({
         name={name}
         type={type ?? name}
         valid={validity}
+        disabled={disabled}
         invalid={validity === false}
         placeholder={t(placeholder ?? label ?? name)}
         {...props}
