@@ -119,7 +119,10 @@ const CountryBirth = ({goNext, goPrev, setHeight, isActive}) => {
       tag: Select,
       col: 6,
       props: {
+        isMulti: true,
+        closeMenuOnSelect: false,
         name: 'other_countries',
+        onChange: () => setTimeout(() => setHeight(formRef.current), 100),
         placeholder: 'choose_other_countries_2',
       },
     },
@@ -127,6 +130,9 @@ const CountryBirth = ({goNext, goPrev, setHeight, isActive}) => {
       tag: Select,
       col: 6,
       props: {
+        isMulti: true,
+        onChange: () => setTimeout(() => setHeight(formRef.current), 100),
+        closeMenuOnSelect: false,
         name: 'nationalities_holding',
         placeholder: 'choose_nationalities_holding_2',
       },

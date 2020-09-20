@@ -34,6 +34,9 @@ const Ethnicity = ({goNext, goPrev, setHeight, isActive}) => {
       tag: Select,
       col: 6,
       props: {
+        isMulti: true,
+        onChange: () => setTimeout(() => setHeight(formRef.current), 100),
+        closeMenuOnSelect: false,
         name: 'ethnicity',
         placeholder: 'choose_ethnicity_4',
       },
@@ -42,6 +45,9 @@ const Ethnicity = ({goNext, goPrev, setHeight, isActive}) => {
       tag: Select,
       col: 6,
       props: {
+        isMulti: true,
+        onChange: () => setTimeout(() => setHeight(formRef.current), 100),
+        closeMenuOnSelect: false,
         label: 'other_ethnicity_aligned',
         name: 'other_ethnicity',
         placeholder: 'choose_other_ethnicity_4',

@@ -4,6 +4,8 @@ import names from 'classnames'
 
 import Select from 'react-select'
 
+import s from './styles.m.scss'
+
 const options = [
   {value: 'chocolate', label: 'Chocolate'},
   {value: 'strawberry', label: 'Strawberry'},
@@ -55,6 +57,7 @@ const FormSelect = props => {
       <Select
         id={name}
         theme={theme}
+        className={s.select}
         styles={colourStyles}
         options={options}
         {...props}

@@ -15,6 +15,7 @@
   z-index: 0;
   margin-top: 3rem;
   padding: 0 1rem;
+  flex-wrap: wrap;
 
   &__troubleShooting {
     font-size: 12px;
@@ -24,6 +25,10 @@
     > * {
       margin-right: 4px;
     }
+  }
+
+  > * + * {
+    margin-left: auto;
   }
 
   &__prev {

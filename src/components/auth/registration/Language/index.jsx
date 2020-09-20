@@ -34,6 +34,9 @@ const Language = ({goNext, goPrev, setHeight, isActive}) => {
       tag: Select,
       col: 6,
       props: {
+        isMulti: true,
+        onChange: () => setTimeout(() => setHeight(formRef.current), 100),
+        closeMenuOnSelect: false,
         name: 'language_advanced',
         placeholder: 'choose_language_5',
       },
@@ -42,6 +45,9 @@ const Language = ({goNext, goPrev, setHeight, isActive}) => {
       tag: Select,
       col: 6,
       props: {
+        isMulti: true,
+        onChange: () => setTimeout(() => setHeight(formRef.current), 100),
+        closeMenuOnSelect: false,
         name: 'language_intermediate',
         placeholder: 'choose_language_5',
       },
@@ -50,6 +56,9 @@ const Language = ({goNext, goPrev, setHeight, isActive}) => {
       tag: Select,
       col: 6,
       props: {
+        onChange: () => setTimeout(() => setHeight(formRef.current), 100),
+        isMulti: true,
+        closeMenuOnSelect: false,
         name: 'language_basic',
         placeholder: 'choose_language_5',
       },
