@@ -66,7 +66,7 @@ const Header = () => {
 }
 
 const Body = () => {
-  const [active, setActive] = useState(7)
+  const [active, setActive] = useState(0)
 
   const slidesWrapperRef = useRef(null)
 
