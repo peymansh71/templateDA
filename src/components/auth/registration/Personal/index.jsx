@@ -63,7 +63,7 @@ const Personal = ({goNext, goPrev, setHeight, isActive}) => {
   const onChangeAnonymous = useCallback(e => setAnonymous(e.target.checked), [])
 
   useEffect(() => {
-    if (isActive) setHeight(formRef.current.offsetHeight)
+    if (isActive) setHeight(formRef.current)
   }, [isActive, validity])
 
   const form = [
@@ -93,7 +93,7 @@ const Personal = ({goNext, goPrev, setHeight, isActive}) => {
     },
     {
       tag: Select,
-      col: 2,
+      col: 4,
       props: {
         name: 'birthYear',
         placeholder: 'choose_year',
@@ -104,7 +104,7 @@ const Personal = ({goNext, goPrev, setHeight, isActive}) => {
     },
     {
       tag: Select,
-      col: 5,
+      col: 4,
       props: {
         name: 'gender',
         placeholder: 'choose_your_gender',
@@ -115,7 +115,7 @@ const Personal = ({goNext, goPrev, setHeight, isActive}) => {
     },
     {
       tag: Select,
-      col: 5,
+      col: 4,
       props: {
         name: 'disability',
         placeholder: 'if_you_have_choose_disability',
@@ -159,7 +159,9 @@ const Personal = ({goNext, goPrev, setHeight, isActive}) => {
             ))}
           </Row>
         </Container>
-        <div className='mt-5 d-flex justify-content-between align-items-start px-3'>
+        <div
+          className={`${s.buttons} d-flex justify-content-between align-items-start`}
+        >
           <CustomInput
             type='checkbox'
             id='anonymous'
@@ -169,7 +171,11 @@ const Personal = ({goNext, goPrev, setHeight, isActive}) => {
             onChange={onChangeAnonymous}
           />
           <div className='d-flex justify-content-between'>
-            <Button className={s.prev} color='dark' onClick={onClickPrev}>
+            <Button
+              className={s.buttons__prev}
+              color='dark'
+              onClick={onClickPrev}
+            >
               <i className='fa fa-chevron-left mr-2' />
               {t('previous')}
             </Button>

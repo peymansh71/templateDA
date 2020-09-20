@@ -1,10 +1,12 @@
 .section {
   opacity: 0;
+  overflow: hidden;
   //transition: opacity 50ms ease-in-out;
   
   &--active {
     opacity: 1;
-    transition: opacity 50ms 250ms ease-in-out;
+  overflow: visible;
+  transition: opacity 50ms 250ms ease-in-out;
   }
 }
 

@@ -21,7 +21,15 @@ const theme = theme => ({
 })
 
 const FormSelect = props => {
-  const {label, labelIcon, name, required, validationMessage, validity} = props
+  const {
+    label,
+    name,
+    required,
+    validity,
+    labelIcon,
+    placeholder,
+    validationMessage,
+  } = props
   const {t} = useTranslation()
 
   const colourStyles = {
@@ -39,15 +47,18 @@ const FormSelect = props => {
 
   return (
     <div className='mb-3'>
-      {!!labelIcon && <i className={`fa ${labelIcon}`} />}
-      <span className='font-weight-bold'>{` ${t(label ?? name)} :`}</span>
+      {!!labelIcon && <i className={`mr-2 fa ${labelIcon}`} />}
+      <label htmlFor={name} className='font-weight-bold'>{` ${t(
+        label ?? name
+      )} :`}</label>
       {required && <span className='text-danger font-weight-bold'> *</span>}
       <Select
-        className='mt-2'
+        id={name}
         theme={theme}
         styles={colourStyles}
         options={options}
         {...props}
+        placeholder={t(placeholder)}
       />
       {!!validationMessage && (
         <span

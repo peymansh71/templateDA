@@ -1,9 +1,23 @@
 .section {
   opacity: 0;
+  overflow: hidden;
   //transition: opacity 50ms ease-in-out;
-  
+
   &--active {
     opacity: 1;
+    overflow: visible;
     transition: opacity 50ms 250ms ease-in-out;
+  }
+}
+
+.buttons {
+  position: relative;
+  z-index: 0;
+  margin-top: 3rem;
+  padding: 0 1rem;
+
+  label > a,
+  span {
+    margin-right: 4px;
   }
 }

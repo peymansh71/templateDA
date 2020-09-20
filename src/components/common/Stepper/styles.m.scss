@@ -1,36 +1,64 @@
 .stepper {
-  position: relative;
+  flex-wrap: wrap;
 
-  &__divider {
-    top: 21px;
-    height: 2px;
-    position: absolute;
-    z-index: 5;
-
-    &--active {
-      left: calc(100% / 14);
-      width: calc(var(--step) * 100% / 7);
-      background-color: $secondary-600;
-    }
-
-    &--disabled {
-      right: calc(100% / 14);
-      width: calc((6 - var(--step)) * 100% / 7);
-      background-color: $gray-600;
-    }
+  > * {
+    flex: 1 1 50%;
   }
 
   &__step {
+    padding: 8px 0 4px;
     position: relative;
-    width: calc(100% / 7);
-    z-index: 10;
+    width: 50%;
+
+    &::after,
+    &::before {
+      content: '';
+      position: absolute;
+      width: 50%;
+      height: 2px;
+      top: 29px;
+      z-index: 5;
+    }
+
+    &::after {
+      right: 0;
+    }
+
+    &::before {
+      left: 0;
+    }
+
+    &--completed {
+      &::before,
+      &::after {
+        background-color: $secondary-600;
+      }
+    }
+
+    &--active {
+      &::before {
+        background-color: $secondary-600;
+      }
+      &::after {
+        background-color: $gray-600;
+      }
+    }
+
+    &--disabled {
+      &::before,
+      &::after {
+        background-color: $gray-600;
+      }
+    }
   }
 
   &__icon {
+    position: relative;
     width: 42px;
     height: 42px;
     border-radius: 50%;
     transition: background-color 200ms ease-in-out;
+    z-index: 10;
 
     i,
     span {
@@ -61,6 +89,24 @@
 
     &--active {
       color: $secondary-500;
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .stepper {
+    flex-wrap: nowrap;
+    > * {
+      flex: 1 1 auto;
+    }
+
+    &__step {
+      width: calc(100% / var(--length));
+
+      &:last-child::after,
+      &:first-child::before {
+        content: none;
+      }
     }
   }
 }

@@ -71,9 +71,9 @@ const Organization = ({goNext, setHeight, isActive}) => {
   const AgreementLabel = useMemo(
     () => (
       <>
-        {t('read&agree')}
-        <Link to='/privacy-policy'>{t('read&agree')}</Link>
-        {t('and')}
+        <span>{t('read&agree')}</span>
+        <Link to='/privacy-policy'>{t('privacy')}</Link>
+        <span>{t('and')}</span>
         <Link to='/code-of-conduct'>{t('codeConduct')}</Link>
       </>
     ),
@@ -81,7 +81,7 @@ const Organization = ({goNext, setHeight, isActive}) => {
   )
 
   useEffect(() => {
-    if (isActive) setHeight(formRef.current.offsetHeight)
+    if (isActive) setHeight(formRef.current)
   }, [isActive, validity])
 
   const form = [
@@ -141,16 +141,26 @@ const Organization = ({goNext, setHeight, isActive}) => {
             ))}
           </Row>
         </Container>
-        <div className='mt-5 d-flex justify-content-between align-items-start px-3'>
-          <CustomInput
-            type='checkbox'
-            id='privacyPolicy'
-            name='privacyPolicy'
-            checked={agreement}
-            label={AgreementLabel}
-            onChange={onChangeAgreement}
-            invalid={validity.agreement === false}
-          />
+        <div
+          className={`${s.buttons} d-flex justify-content-between align-items-start`}
+        >
+          <div>
+            <CustomInput
+              type='checkbox'
+              id='privacyPolicy'
+              name='privacyPolicy'
+              checked={agreement}
+              label={AgreementLabel}
+              onChange={onChangeAgreement}
+            />
+            <span
+              className={names('invalid-feedback', {
+                'd-block': validity.agreement === false,
+              })}
+            >
+              {t('must_agree')}
+            </span>
+          </div>
           <div className='d-flex justify-content-between'>
             <Button className='ml-3' onClick={onClickNext}>
               {t('next')}

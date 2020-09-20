@@ -15,13 +15,13 @@ const Success = ({setHeight, isActive}) => {
   const sectionRef = useRef(null)
 
   useEffect(() => {
-    if (isActive) setHeight(sectionRef.current.offsetHeight)
+    if (isActive) setHeight(sectionRef.current)
   }, [isActive])
 
   return (
     <div className={names(s.section, {[s['section--active']]: isActive})}>
       <div ref={sectionRef}>
-        <Container fluid>
+        <Container fluid className='pt-5'>
           <Row>
             <Col sm='12' md='6'>
               <img
@@ -33,8 +33,8 @@ const Success = ({setHeight, isActive}) => {
             <Col sm='12' md='6'>
               <div>
                 <h1 className='text-secondary'>{t('success!')}</h1>
-                <p>{t('now_registered')}</p>
-                <Link className='btn btn-secondary' to='/login'>
+                <p className='mb-5'>{t('now_registered')}</p>
+                <Link className='btn btn-secondary px-3' to='/login'>
                   {t('login')}
                 </Link>
               </div>

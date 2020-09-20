@@ -42,7 +42,7 @@ export const Structure = ({goNext, goPrev, setHeight, isActive}) => {
   const onChangeOption = useCallback(e => setSelected(e.target.value), [])
 
   useEffect(() => {
-    if (isActive) setHeight(formRef.current.offsetHeight)
+    if (isActive) setHeight(formRef.current)
   }, [isActive])
 
   const form = [

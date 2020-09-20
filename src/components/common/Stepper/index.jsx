@@ -2,41 +2,46 @@ import React from 'react'
 import {useTranslation} from 'react-i18next'
 import names from 'classnames'
 
-import styles from './styles.m.scss'
+import s from './styles.m.scss'
+
+const STATUS = {ACTIVE: 0, COMPLETED: 1, DISABLED: -1}
 
 const Stepper = ({steps, active}) => {
   const maxLevel = active > steps.length - 1 ? steps.length - 1 : active
   return (
     <div
-      className={`${styles.stepper} d-flex justify-content-between`}
-      style={{'--step': maxLevel}}
+      className={`${s.stepper} d-flex justify-content-between`}
+      style={{'--length': steps.length}}
     >
-      <div
-        className={`${styles.stepper__divider} ${styles['stepper__divider--active']}`}
-      />
-      {steps.map((step, index) => (
-        <div
-          key={step}
-          className={`${styles.stepper__step} d-flex flex-column align-items-center`}
-        >
-          <Icon status={Math.sign(active - index)} index={index} />
-          <Label status={Math.sign(active - index)} label={step} />
-        </div>
-      ))}
-      <div
-        className={`${styles.stepper__divider} ${styles['stepper__divider--disabled']}`}
-      />
+      {steps.map((step, index) => {
+        const lStatus = Math.sign(active - index)
+        const iStatus = Math.sign(maxLevel - index)
+        return (
+          <div
+            key={step}
+            className={names(
+              s.stepper__step,
+              {[s['stepper__step--completed']]: iStatus === STATUS.COMPLETED},
+              {[s['stepper__step--active']]: iStatus === STATUS.ACTIVE},
+              {[s['stepper__step--disabled']]: iStatus === STATUS.DISABLED},
+              'd-flex flex-column align-items-center'
+            )}
+          >
+            <Icon status={lStatus} index={index} />
+            <Label status={lStatus} label={step} />
+          </div>
+        )
+      })}
     </div>
   )
 }
 
 const Icon = ({status, index}) => {
-  const STATUS = {ACTIVE: 0, COMPLETED: 1, DISABLED: -1}
   const className = names(
-    styles.stepper__icon,
-    {[styles['stepper__icon--completed']]: status === STATUS.COMPLETED},
-    {[styles['stepper__icon--active']]: status === STATUS.ACTIVE},
-    {[styles['stepper__icon--disabled']]: status === STATUS.DISABLED},
+    s.stepper__icon,
+    {[s['stepper__icon--completed']]: status === STATUS.COMPLETED},
+    {[s['stepper__icon--active']]: status === STATUS.ACTIVE},
+    {[s['stepper__icon--disabled']]: status === STATUS.DISABLED},
     'd-flex align-items-center justify-content-center mb-2'
   )
   return (
@@ -56,8 +61,8 @@ const Label = ({label, status}) => {
   const {t} = useTranslation()
   const STATUS = {ACTIVE: 0, COMPLETED: 1, DISABLED: -1}
   const className = names(
-    styles.stepper__label,
-    {[styles['stepper__label--active']]: status === STATUS.ACTIVE},
+    s.stepper__label,
+    {[s['stepper__label--active']]: status === STATUS.ACTIVE},
     'text-center'
   )
   return <span className={className}>{t(label)}</span>

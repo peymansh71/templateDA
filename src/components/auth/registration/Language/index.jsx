@@ -26,7 +26,7 @@ const Language = ({goNext, goPrev, setHeight, isActive}) => {
   const onClickPrev = useCallback(goPrev, [])
 
   useEffect(() => {
-    if (isActive) setHeight(formRef.current.offsetHeight)
+    if (isActive) setHeight(formRef.current)
   }, [isActive])
 
   const form = [

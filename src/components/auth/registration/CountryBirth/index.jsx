@@ -41,7 +41,7 @@ const CountryBirth = ({goNext, goPrev, setHeight, isActive}) => {
   const onClickPrev = useCallback(goPrev, [])
 
   useEffect(() => {
-    if (isActive) setHeight(formRef.current.offsetHeight)
+    if (isActive) setHeight(formRef.current)
   }, [isActive, validity])
 
   const form = [
@@ -128,7 +128,7 @@ const CountryBirth = ({goNext, goPrev, setHeight, isActive}) => {
       col: 6,
       props: {
         name: 'nationalities_holding',
-        placeholder: 'choose_other_countries_2',
+        placeholder: 'choose_nationalities_holding_2',
       },
     },
   ]
@@ -151,8 +151,10 @@ const CountryBirth = ({goNext, goPrev, setHeight, isActive}) => {
             ))}
           </Row>
         </Container>
-        <div className='mt-5 d-flex justify-content-between align-items-start px-3'>
-          <div className={s.troubleShooting}>
+        <div
+          className={`${s.buttons} d-flex justify-content-between align-items-start`}
+        >
+          <div className={s.buttons__troubleShooting}>
             <i className='text-secondary test-large fa fa-question-circle' />
             <span>{t('cant_find_country')}</span>
             <span>{t('read_our')}</span>
@@ -161,7 +163,11 @@ const CountryBirth = ({goNext, goPrev, setHeight, isActive}) => {
             <Link to='contact-us'>{t('contact_us')}.</Link>
           </div>
           <div className='d-flex justify-content-between'>
-            <Button className={s.prev} color='dark' onClick={onClickPrev}>
+            <Button
+              className={s.buttons__prev}
+              color='dark'
+              onClick={onClickPrev}
+            >
               <i className='fa fa-chevron-left mr-2' />
               {t('previous')}
             </Button>

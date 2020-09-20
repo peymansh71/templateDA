@@ -1,4 +1,4 @@
-import React, {useState, useRef, useMemo, useCallback} from 'react'
+import React, {useState, useRef, useMemo, useCallback, useEffect} from 'react'
 import {Helmet} from 'react-helmet'
 import {Link} from 'react-router-dom'
 import {useTranslation} from 'react-i18next'
@@ -66,12 +66,15 @@ const Header = () => {
 }
 
 const Body = () => {
-  const [active, setActive] = useState(0)
+  const [active, setActive] = useState(7)
 
   const slidesWrapperRef = useRef(null)
 
-  const setHeight = useCallback(height => {
-    slidesWrapperRef.current.style.cssText += `;--height:${height}px;`
+  const childRef = useRef(0)
+
+  const setHeight = useCallback(ref => {
+    childRef.current = ref
+    slidesWrapperRef.current.style.cssText += `;--height:${ref.offsetHeight}px;`
   }, [])
 
   const {length} = steps
@@ -80,6 +83,13 @@ const Body = () => {
     setActive(active => (active < length ? active + 1 : length))
   }
   const goPrev = () => setActive(active => (active > 0 ? active - 1 : 0))
+
+  const onResizeWindow = useCallback(() => setHeight(childRef.current), [])
+
+  useEffect(() => {
+    window.addEventListener('resize', onResizeWindow)
+    return () => window.removeEventListener('resize', onResizeWindow)
+  }, [])
 
   const slides = useMemo(
     () => [

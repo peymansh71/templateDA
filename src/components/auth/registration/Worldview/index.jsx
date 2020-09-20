@@ -34,7 +34,11 @@ const Worldview = ({goNext, goPrev, setHeight, isActive}) => {
   const onChangeChecked = useCallback(e => setChecked(e.target.checked), [])
 
   useEffect(() => {
-    if (isActive) setHeight(formRef.current.offsetHeight)
+    if (checked) setRows(1)
+  }, [checked])
+
+  useEffect(() => {
+    if (isActive) setHeight(formRef.current)
   }, [isActive, rows])
 
   const getRow = row => [
@@ -82,7 +86,7 @@ const Worldview = ({goNext, goPrev, setHeight, isActive}) => {
       result.push(...getRow(i))
     }
     return result
-  }, [rows])
+  }, [rows, checked])
 
   return (
     <div className={names(s.section, {[s['section--active']]: isActive})}>
