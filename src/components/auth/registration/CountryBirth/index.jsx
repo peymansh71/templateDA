@@ -21,7 +21,7 @@ const CountryBirth = ({goNext, goPrev, setHeight, isActive}) => {
 
     let status = null
 
-    if (!data.get('countryBirth').trim()) status = false
+    if (!data.get('countryBirth').trim()) status = true
     else status = true
 
     if (status) {
@@ -51,7 +51,7 @@ const CountryBirth = ({goNext, goPrev, setHeight, isActive}) => {
       props: {
         name: 'countryBirth',
         placeholder: 'choose_county_birth',
-        required: true,
+        // required: true,
         validity,
         validationMessage: 'country_birth_required',
       },
@@ -177,7 +177,11 @@ const CountryBirth = ({goNext, goPrev, setHeight, isActive}) => {
               <i className='fa fa-chevron-left mr-2' />
               {t('previous')}
             </Button>
-            <Button className='ml-3' onClick={onClickNext}>
+            <Button
+              className='ml-3'
+              onClick={onClickNext}
+              id='country_birth_next'
+            >
               {t('next')}
               <i className='fa fa-chevron-right ml-2' />
             </Button>

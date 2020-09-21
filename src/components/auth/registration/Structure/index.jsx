@@ -141,7 +141,7 @@ export const Structure = ({goNext, goPrev, setHeight, isActive}) => {
               <i className='fa fa-chevron-left mr-2' />
               {t('previous')}
             </Button>
-            <Button className='ml-3' onClick={onClickNext}>
+            <Button className='ml-3' onClick={onClickNext} id='structure-next'>
               {t('survey')}
               <i className='fa fa-chevron-right ml-2' />
             </Button>

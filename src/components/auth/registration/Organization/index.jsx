@@ -38,7 +38,7 @@ const Organization = ({goNext, setHeight, isActive}) => {
     if (!data.get('organization_name').trim()) state.org = false
     else state.org = true
 
-    if (!data.get('country').trim()) state.country = false
+    if (!data.get('country').trim()) state.country = true
     else state.country = true
 
     if (!validateEmail(data.get('email'))) state.email = false
@@ -99,7 +99,7 @@ const Organization = ({goNext, setHeight, isActive}) => {
       tag: Select,
       props: {
         name: 'country',
-        required: true,
+        // required: true,
         validity: validity.country,
         validationMessage: 'country_required',
       },
@@ -162,7 +162,11 @@ const Organization = ({goNext, setHeight, isActive}) => {
             </span>
           </div>
           <div className='d-flex justify-content-between'>
-            <Button className='ml-3' onClick={onClickNext}>
+            <Button
+              className='ml-3'
+              onClick={onClickNext}
+              id='organization-next'
+            >
               {t('next')}
               <i className='fa fa-chevron-right ml-2' />
             </Button>

@@ -84,7 +84,7 @@ const Language = ({goNext, goPrev, setHeight, isActive}) => {
               <i className='fa fa-chevron-left mr-2' />
               {t('previous')}
             </Button>
-            <Button className='ml-3' onClick={onClickNext}>
+            <Button className='ml-3' onClick={onClickNext} id='language-next'>
               {t('next')}
               <i className='fa fa-chevron-right ml-2' />
             </Button>

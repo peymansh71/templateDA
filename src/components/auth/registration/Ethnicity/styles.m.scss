@@ -2,17 +2,27 @@
   opacity: 0;
   overflow: hidden;
   //transition: opacity 50ms ease-in-out;
-  
+
   &--active {
     opacity: 1;
-  overflow: visible;
-  transition: opacity 50ms 250ms ease-in-out;
+    overflow: visible;
+    transition: opacity 50ms 250ms ease-in-out;
+  }
+
+  &__col {
+    > *:first-child {
+      position: relative;
+      z-index: 5;
+    }
+
+    > *:last-child {
+      position: relative;
+      z-index: 1;
+    }
   }
 }
 
-
 .prev {
-    color: $gray-700;
-    border-color: $gray-600;
-  }
-  
+  color: $gray-700;
+  border-color: $gray-600;
+}

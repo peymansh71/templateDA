@@ -128,7 +128,11 @@ const Worldview = ({goNext, goPrev, setHeight, isActive}) => {
               <i className='fa fa-chevron-left mr-2' />
               {t('previous')}
             </Button>
-            <Button className='ml-3' onClick={onClickNext}>
+            <Button
+              className='ml-3'
+              onClick={onClickNext}
+              id='worldview-submit'
+            >
               {t('submit')}
               <i className='fa fa-chevron-right ml-2' />
             </Button>

@@ -36,10 +36,10 @@ const Personal = ({goNext, goPrev, setHeight, isActive}) => {
     if (!data.get('lastName')?.trim() && !anonymous) state.lastName = false
     else state.lastName = true
 
-    if (!data.get('birthYear').trim()) state.birthYear = false
+    if (!data.get('birthYear').trim()) state.birthYear = true
     else state.birthYear = true
 
-    if (!data.get('gender').trim()) state.gender = false
+    if (!data.get('gender').trim()) state.gender = true
     else state.gender = true
 
     const status = Object.values(state).reduce((a, b) => a && b)
@@ -97,7 +97,7 @@ const Personal = ({goNext, goPrev, setHeight, isActive}) => {
       props: {
         name: 'birthYear',
         placeholder: 'choose_year',
-        required: true,
+        // required: true,
         validity: validity.birthYear,
         validationMessage: 'birth_year_required',
       },
@@ -108,7 +108,7 @@ const Personal = ({goNext, goPrev, setHeight, isActive}) => {
       props: {
         name: 'gender',
         placeholder: 'choose_your_gender',
-        required: true,
+        // required: true,
         validity: validity.gender,
         validationMessage: 'gender_required',
       },
@@ -179,7 +179,7 @@ const Personal = ({goNext, goPrev, setHeight, isActive}) => {
               <i className='fa fa-chevron-left mr-2' />
               {t('previous')}
             </Button>
-            <Button className='ml-3' onClick={onClickNext}>
+            <Button className='ml-3' onClick={onClickNext} id='personal-next'>
               {t('next')}
               <i className='fa fa-chevron-right ml-2' />
             </Button>

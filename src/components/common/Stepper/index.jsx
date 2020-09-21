@@ -2,7 +2,7 @@ import React from 'react'
 import {useTranslation} from 'react-i18next'
 import names from 'classnames'
 
-import s from './styles.m.scss'
+import './styles.scss'
 
 const STATUS = {ACTIVE: 0, COMPLETED: 1, DISABLED: -1}
 
@@ -10,7 +10,7 @@ const Stepper = ({steps, active}) => {
   const maxLevel = active > steps.length - 1 ? steps.length - 1 : active
   return (
     <div
-      className={`${s.stepper} d-flex justify-content-between`}
+      className='stepper d-flex justify-content-between'
       style={{'--length': steps.length}}
     >
       {steps.map((step, index) => {
@@ -18,12 +18,13 @@ const Stepper = ({steps, active}) => {
         const iStatus = Math.sign(maxLevel - index)
         return (
           <div
+            id={`stepper_${step}`}
             key={step}
             className={names(
-              s.stepper__step,
-              {[s['stepper__step--completed']]: iStatus === STATUS.COMPLETED},
-              {[s['stepper__step--active']]: iStatus === STATUS.ACTIVE},
-              {[s['stepper__step--disabled']]: iStatus === STATUS.DISABLED},
+              'stepper__step',
+              {'stepper__step--completed': iStatus === STATUS.COMPLETED},
+              {'stepper__step--active': iStatus === STATUS.ACTIVE},
+              {'stepper__step--disabled': iStatus === STATUS.DISABLED},
               'd-flex flex-column align-items-center'
             )}
           >
@@ -38,10 +39,10 @@ const Stepper = ({steps, active}) => {
 
 const Icon = ({status, index}) => {
   const className = names(
-    s.stepper__icon,
-    {[s['stepper__icon--completed']]: status === STATUS.COMPLETED},
-    {[s['stepper__icon--active']]: status === STATUS.ACTIVE},
-    {[s['stepper__icon--disabled']]: status === STATUS.DISABLED},
+    'stepper__icon',
+    {'stepper__icon--completed': status === STATUS.COMPLETED},
+    {'stepper__icon--active': status === STATUS.ACTIVE},
+    {'stepper__icon--disabled': status === STATUS.DISABLED},
     'd-flex align-items-center justify-content-center mb-2'
   )
   return (
@@ -61,8 +62,8 @@ const Label = ({label, status}) => {
   const {t} = useTranslation()
   const STATUS = {ACTIVE: 0, COMPLETED: 1, DISABLED: -1}
   const className = names(
-    s.stepper__label,
-    {[s['stepper__label--active']]: status === STATUS.ACTIVE},
+    'stepper__label',
+    {'stepper__label--active': status === STATUS.ACTIVE},
     'text-center'
   )
   return <span className={className}>{t(label)}</span>
