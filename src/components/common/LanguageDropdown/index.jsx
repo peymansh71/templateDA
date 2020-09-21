@@ -11,7 +11,7 @@ import portugal from '~assets/images/flags/pt.png'
 
 const locales = [
   {flag: england, lang: 'English', lng: 'eng'},
-  {flag: spain, lang: 'Spanish', lng: 'sp'},
+  {flag: spain, lang: 'Spanish', lng: 'es'},
   {flag: france, lang: 'French', lng: 'fr'},
   {flag: portugal, lang: 'Portuguese', lng: 'pt'},
 ]
@@ -22,6 +22,7 @@ const LanguageDropdown = () => {
   const [lng, setLng] = useState('English')
 
   function changeLanguage(locale) {
+    console.log(locale)
     i18n.changeLanguage(locale.lng)
     setFlag(locale.flag)
     setLng(locale.lang)
