@@ -61,7 +61,14 @@
     "no-restricted-syntax": ["error", "LabeledStatement", "WithStatement"],
     "import/no-extraneous-dependencies": [
       "error",
-      {"devDependencies": ["./webpack/*.js", "./*.config.js"]}
+      {
+        "devDependencies": [
+          "./webpack/*.js",
+          "./*.config.js",
+          "**/*.test.js",
+          "**/*.test.jsx"
+        ]
+      }
     ],
     "no-underscore-dangle": [2, {"allowAfterThis": true}],
     "no-shadow": "off",

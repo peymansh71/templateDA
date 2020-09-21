@@ -1,17 +1,9 @@
 module.exports = {
-  verbose: true,
-  collectCoverageFrom: ['**/*.{js,jsx}', '!**/node_modules/**', '!**/*.test.{js,jsx}'],
-  coverageThreshold: {
-    global: {
-      statements: 90,
-      branches: 90,
-      functions: 90,
-      lines: 90,
-    },
-  },
-  moduleDirectories: ['node_modules', 'src'],
+  // setupFilesAfterEnv: ['jest-extended'],
+  // collectCoverage: true,
+  coverageDirectory: './coverage',
   moduleNameMapper: {
-    '.*\\.(css|less|styl|scss|sass)$': 'babel-jest',
+    '\\.(c|sc|sa)ss$': 'identity-obj-proxy',
+    '\\.(png|svg|pdf|jpg|jpeg)$': '<rootDir>/__mocks__/fileMock.js',
   },
-  setupFilesAfterEnv: ['@testing-library/react/cleanup-after-each'],
 }
