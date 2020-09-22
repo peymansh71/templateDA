@@ -3,7 +3,7 @@ import React from 'react'
 import Redux from './redux'
 import Router from './router'
 
-import '~styles/theme.scss'
+import '~styles/app.scss'
 
 const App = () => (
   <Redux>
