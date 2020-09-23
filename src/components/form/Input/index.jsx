@@ -1,4 +1,5 @@
 import React from 'react'
+import names from 'classnames'
 import {useTranslation} from 'react-i18next'
 
 import {FormGroup, Label, Input, FormText, FormFeedback} from 'reactstrap'
@@ -14,6 +15,7 @@ const FormInput = ({
   required,
   disabled,
   validity,
+  iconStatus,
   placeholder,
   validationMessage,
   onClickIcon = () => {},
@@ -25,10 +27,12 @@ const FormInput = ({
 
   return (
     <FormGroup className={s.input}>
-      <Label for={name}>
-        <span>{`${t(label ?? name)} :`}</span>
-        {required && <span className='text-danger'> *</span>}
-      </Label>
+      {label !== '' && (
+        <Label for={name}>
+          <span>{`${t(label ?? name)} :`}</span>
+          {required && <span className='text-danger'> *</span>}
+        </Label>
+      )}
       <Input
         id={name}
         name={name}
@@ -40,7 +44,14 @@ const FormInput = ({
         {...props}
       />
       {!!icon && (
-        <button type='button' className={s.input__icon} onClick={onClickIcon}>
+        <button
+          type='button'
+          className={names(s.input__icon, {
+            [s['input__icon--withLabel']]: label !== '',
+            [s['input__icon--inactive']]: !iconStatus,
+          })}
+          onClick={onClickIcon}
+        >
           <i className={`fa ${icon}`} />
         </button>
       )}
