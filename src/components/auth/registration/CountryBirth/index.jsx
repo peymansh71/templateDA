@@ -21,7 +21,7 @@ const CountryBirth = ({goNext, goPrev, setHeight, isActive}) => {
 
     let status = null
 
-    if (!data.get('countryBirth').trim()) status = true
+    if (!data.get('countryBirth').trim()) status = false
     else status = true
 
     if (status) {
@@ -51,7 +51,7 @@ const CountryBirth = ({goNext, goPrev, setHeight, isActive}) => {
       props: {
         name: 'countryBirth',
         placeholder: 'choose_county_birth',
-        // required: true,
+        required: true,
         validity,
         validationMessage: 'country_birth_required',
       },

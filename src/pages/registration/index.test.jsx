@@ -29,6 +29,21 @@ describe('registration component', () => {
     container = null
   })
 
+  const selectFromDropDown = (input, index) => {
+    for (let i = 0; i < index; i++) {
+      act(() => {
+        input.dispatchEvent(
+          new KeyboardEvent('keydown', {key: 'ArrowDown', bubbles: true})
+        )
+      })
+    }
+    act(() => {
+      input.dispatchEvent(
+        new KeyboardEvent('keydown', {key: 'Enter', bubbles: true})
+      )
+    })
+  }
+
   test('registration page', () => {
     act(() => {
       ReactDOM.render(
@@ -48,14 +63,14 @@ describe('registration component', () => {
     const organizationName = container.querySelector('#organization_name')
     organizationName.value = 'organization'
 
-    const country = container.querySelector('#country input')
-
-    country.value = 'text'
+    const country = container.querySelector('#country')
+    selectFromDropDown(country, 1)
 
     const email = container.querySelector('#email')
     email.value = 'test@test.com'
 
     const password = container.querySelector('#password')
+    // Eight or more characters, with at least one lowercase and one uppercase letter.
     password.value = 'Aaaaaaaa'
 
     const policy = container.querySelector('#privacyPolicy')
@@ -90,6 +105,12 @@ describe('registration component', () => {
     const lastName = container.querySelector('#lastName')
     lastName.value = 'lastName'
 
+    const birthYear = container.querySelector('#birthYear')
+    selectFromDropDown(birthYear, 1)
+
+    const gender = container.querySelector('#gender')
+    selectFromDropDown(gender, 1)
+
     const anonymousCheckbox = container.querySelector('#anonymous')
     anonymousCheckbox.checked = true
 
@@ -99,10 +120,13 @@ describe('registration component', () => {
       personalNextBtn.dispatchEvent(new MouseEvent('click', {bubbles: true}))
     })
 
-    const countryBirth = container.querySelector('#stepper_country_birth')
-    expect(countryBirth.className.includes('--active')).toBe(true)
+    const countryBirthBtn = container.querySelector('#stepper_country_birth')
+    expect(countryBirthBtn.className.includes('--active')).toBe(true)
 
     // Step 4
+    const countryBirth = container.querySelector('#countryBirth')
+    selectFromDropDown(countryBirth, 1)
+
     const countryBirthNext = container.querySelector('#country_birth_next')
 
     act(() => {
