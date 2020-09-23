@@ -102,6 +102,7 @@ const Worldview = ({goNext, goPrev, setHeight, isActive}) => {
           {rows < 3 && (
             <div className='d-flex justify-content-center align-items-center'>
               <Button
+                id='add-more-worldview'
                 outline
                 disabled={checked}
                 onClick={onClickCopy}
@@ -124,7 +125,12 @@ const Worldview = ({goNext, goPrev, setHeight, isActive}) => {
             onChange={onChangeChecked}
           />
           <div className='d-flex justify-content-between'>
-            <Button className={s.prev} color='dark' onClick={onClickPrev}>
+            <Button
+              id='worldview-back'
+              className={s.prev}
+              color='dark'
+              onClick={onClickPrev}
+            >
               <i className='fa fa-chevron-left mr-2' />
               {t('previous')}
             </Button>

@@ -232,7 +232,25 @@ describe('registration component', () => {
     const worldview = container.querySelector('#stepper_worldview')
     expect(worldview.className.includes('--active')).toBe(true)
 
+    // back button
+    const backBtn = container.querySelector('#worldview-back')
+    act(() => {
+      backBtn.dispatchEvent(new MouseEvent('click', {bubbles: true}))
+    })
+    expect(language.className.includes('--active')).toBe(true)
+
+    act(() => {
+      languageNext.dispatchEvent(new MouseEvent('click', {bubbles: true}))
+    })
+    expect(worldview.className.includes('--active')).toBe(true)
+
     // Step 7
+    const addMore = container.querySelector('#add-more-worldview')
+
+    act(() => {
+      addMore.dispatchEvent(new MouseEvent('click', {bubbles: true}))
+    })
+
     const hasWorld = container.querySelector('#hasWorldview')
     hasWorld.checked = true
 
