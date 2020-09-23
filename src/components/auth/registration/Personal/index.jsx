@@ -63,6 +63,13 @@ const Personal = ({goNext, goPrev, setHeight, isActive}) => {
   const onChangeAnonymous = useCallback(e => setAnonymous(e.target.checked), [])
 
   useEffect(() => {
+    if (anonymous) {
+      document.getElementById('firstName').value = ''
+      document.getElementById('lastName').value = ''
+    }
+  }, [anonymous])
+
+  useEffect(() => {
     if (isActive) setHeight(formRef.current)
   }, [isActive, validity])
 

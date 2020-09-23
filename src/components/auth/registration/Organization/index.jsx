@@ -104,7 +104,7 @@ const Organization = ({goNext, setHeight, isActive}) => {
         validationMessage: 'country_required',
       },
     },
-    {tag: Select, props: {name: 'State/Province'}},
+    {tag: Select, props: {name: 'state'}},
     {tag: Input, props: {name: 'city', type: 'text'}},
     {
       tag: Input,

@@ -66,6 +66,12 @@ describe('registration component', () => {
     const country = container.querySelector('#country')
     selectFromDropDown(country, 1)
 
+    const state = container.querySelector('#state')
+    selectFromDropDown(state, 1)
+
+    const city = container.querySelector('#city')
+    selectFromDropDown(city, 1)
+
     const email = container.querySelector('#email')
     email.value = 'test@test.com'
 
@@ -111,6 +117,18 @@ describe('registration component', () => {
     const gender = container.querySelector('#gender')
     selectFromDropDown(gender, 1)
 
+    const disability = container.querySelector('#disability')
+    selectFromDropDown(disability, 1)
+
+    const education = container.querySelector('#education')
+    selectFromDropDown(education, 1)
+
+    const positionLevel = container.querySelector('#position_level')
+    selectFromDropDown(positionLevel, 1)
+
+    const positionType = container.querySelector('#position_type')
+    selectFromDropDown(positionType, 1)
+
     const anonymousCheckbox = container.querySelector('#anonymous')
     anonymousCheckbox.checked = true
 
@@ -127,6 +145,27 @@ describe('registration component', () => {
     const countryBirth = container.querySelector('#countryBirth')
     selectFromDropDown(countryBirth, 1)
 
+    const stateBirth = container.querySelector('#stateBirth')
+    selectFromDropDown(stateBirth, 1)
+
+    const father = container.querySelector('#father')
+    selectFromDropDown(father, 1)
+
+    const mother = container.querySelector('#mother')
+    selectFromDropDown(mother, 1)
+
+    const paternalGrandfather = container.querySelector('#paternalGrandfather')
+    selectFromDropDown(paternalGrandfather, 1)
+
+    const maternalGrandfather = container.querySelector('#maternalGrandfather')
+    selectFromDropDown(maternalGrandfather, 1)
+
+    const paternalGrandmother = container.querySelector('#paternalGrandmother')
+    selectFromDropDown(paternalGrandmother, 1)
+
+    const maternalGrandmother = container.querySelector('#maternalGrandmother')
+    selectFromDropDown(maternalGrandmother, 1)
+
     const countryBirthNext = container.querySelector('#country_birth_next')
 
     act(() => {
@@ -139,15 +178,15 @@ describe('registration component', () => {
     expect(ethnicityAppearance.className.includes('--active')).toBe(true)
 
     // Step 5
-    const ethnicityCheck = container.querySelector('#ethnicityCheck')
-    act(() => {
-      ethnicityCheck.dispatchEvent(new MouseEvent('click', {bubbles: true}))
-    })
+    const ethnicity = container.querySelector('#ethnicity')
+    selectFromDropDown(ethnicity, 1)
+    selectFromDropDown(ethnicity, 2)
+    selectFromDropDown(ethnicity, 3)
 
-    const aligned = container.querySelector('#aligned')
-    act(() => {
-      aligned.dispatchEvent(new MouseEvent('click', {bubbles: true}))
-    })
+    const otherEthnicity = container.querySelector('#other_ethnicity')
+    selectFromDropDown(otherEthnicity, 1)
+    selectFromDropDown(otherEthnicity, 2)
+    selectFromDropDown(otherEthnicity, 3)
 
     const appearanceCheck = container.querySelector('#appearanceCheck')
     act(() => {
@@ -169,6 +208,21 @@ describe('registration component', () => {
     expect(language.className.includes('--active')).toBe(true)
 
     // Step 6
+    const advanced = container.querySelector('#language_advanced')
+    selectFromDropDown(advanced, 1)
+    selectFromDropDown(advanced, 2)
+    selectFromDropDown(advanced, 3)
+
+    const intermediate = container.querySelector('#language_intermediate')
+    selectFromDropDown(intermediate, 1)
+    selectFromDropDown(intermediate, 2)
+    selectFromDropDown(intermediate, 3)
+
+    const basic = container.querySelector('#language_basic')
+    selectFromDropDown(basic, 1)
+    selectFromDropDown(basic, 2)
+    selectFromDropDown(basic, 3)
+
     const languageNext = container.querySelector('#language-next')
 
     act(() => {
