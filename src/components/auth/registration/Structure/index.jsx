@@ -46,9 +46,9 @@ export const Structure = ({goNext, goPrev, setHeight, isActive}) => {
   }, [isActive])
 
   const form = [
-    {id: 1, image: tiers2URL},
-    {id: 2, image: tiers3URL},
-    {id: 3, image: tiers4URL},
+    {id: 2, image: tiers2URL},
+    {id: 3, image: tiers3URL},
+    {id: 4, image: tiers4URL},
   ]
 
   return (
@@ -116,11 +116,11 @@ export const Structure = ({goNext, goPrev, setHeight, isActive}) => {
                     <input
                       type='radio'
                       name='option'
-                      id={`tires${item.id + 1}`}
-                      value={`tires${item.id + 1}`}
+                      id={`tiers${item.id}`}
+                      value={`tiers${item.id}`}
                       onChange={onChangeOption}
                       className={`${s.tier__customInput} custom-control-input`}
-                      checked={selected === `tires${item.id + 1}`}
+                      checked={selected === `tiers${item.id}`}
                     />
                     <label
                       className={`${s.tier__customLabel} custom-control-label`}
