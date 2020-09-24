@@ -10,8 +10,9 @@ const FormPassword = props => {
     <FormInput
       name='password'
       type={visibility ? 'text' : 'password'}
-      icon={visibility ? 'fa-eye-slash' : 'fa-eye'}
+      icon={visibility ? 'fa-eye' : 'fa-eye-slash'}
       onClickIcon={onClick}
+      iconStatus={visibility}
       required
       {...props}
     />
