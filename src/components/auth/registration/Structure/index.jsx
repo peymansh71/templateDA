@@ -116,15 +116,15 @@ export const Structure = ({goNext, goPrev, setHeight, isActive}) => {
                     <input
                       type='radio'
                       name='option'
-                      id={`${item.id + 1}tires`}
-                      value={`${item.id + 1}tires`}
+                      id={`tires${item.id + 1}`}
+                      value={`tires${item.id + 1}`}
                       onChange={onChangeOption}
                       className={`${s.tier__customInput} custom-control-input`}
-                      checked={selected === `${item.id + 1}tires`}
+                      checked={selected === `tires${item.id + 1}`}
                     />
                     <label
                       className={`${s.tier__customLabel} custom-control-label`}
-                      htmlFor={`${item.id + 1}tires`}
+                      htmlFor={`tires${item.id + 1}`}
                     >
                       {t('Choose_plan')}
                     </label>
