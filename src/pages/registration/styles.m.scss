@@ -1,0 +1,20 @@
+.registration {
+  border-radius: 5px;
+  border: solid 1px $gray-500;
+}
+
+.body {
+  padding: 20px;
+
+  &__slides {
+    --step: 0;
+    height: calc(var(--height) + 16px);
+    transform: translateX(calc(var(--step) * -100%));
+    transition: transform 300ms ease-in-out;
+
+    > * {
+      flex: 1 0 100%;
+      max-height: calc(var(--height) + 16px);
+    }
+  }
+}

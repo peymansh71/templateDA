@@ -1,0 +1,31 @@
+.section {
+  opacity: 0;
+  overflow: hidden;
+  //transition: opacity 50ms ease-in-out;
+
+  &--active {
+    opacity: 1;
+    overflow: au;
+    transition: opacity 50ms 250ms ease-in-out;
+  }
+
+  &__container {
+    position: relative;
+    z-index: 100;
+  }
+}
+
+.copy {
+  padding: 10px 13px;
+  border-radius: 3px;
+  font-size: 0.75rem;
+  i {
+    margin-right: 0.5rem;
+    font-size: 1rem;
+  }
+}
+
+.prev {
+  color: $gray-700;
+  border-color: $gray-600;
+}
