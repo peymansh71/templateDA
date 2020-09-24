@@ -92,7 +92,7 @@ describe('registration component', () => {
     expect(structure.className.includes('--active')).toBe(true)
 
     // Step 2
-    const tierOption = container.querySelector('#option3')
+    const tierOption = container.querySelector('#2tires')
     tierOption.checked = true
 
     const structureNextBtn = container.querySelector('#structure-next')

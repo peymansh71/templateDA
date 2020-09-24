@@ -116,7 +116,7 @@ export const Structure = ({goNext, goPrev, setHeight, isActive}) => {
                     <input
                       type='radio'
                       name='option'
-                      id={`option${item.id}`}
+                      id={`${item.id + 1}tires`}
                       value={`option${item.id}`}
                       onChange={onChangeOption}
                       className={`${s.tier__customInput} custom-control-input`}
