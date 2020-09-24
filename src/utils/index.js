@@ -7,6 +7,6 @@ export const validateEmail = email => {
 }
 
 export const validatePass = pass => {
-  const regex = /^(?=.*[a-z])(?=.*[A-Z]).{8,}$/
+  const regex = /^(?=.*[a-z])(?=.*[0-9])(?=.*[A-Z]).{8,}$/
   return regex.test(pass)
 }

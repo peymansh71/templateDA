@@ -70,14 +70,14 @@ describe('registration component', () => {
     selectFromDropDown(state, 1)
 
     const city = container.querySelector('#city')
-    selectFromDropDown(city, 1)
+    city.value = 'tehran'
 
     const email = container.querySelector('#email')
     email.value = 'test@test.com'
 
     const password = container.querySelector('#password')
-    // Eight or more characters, with at least one lowercase and one uppercase letter.
-    password.value = 'Aaaaaaaa'
+    // Eight or more characters, with at least one lowercase and one uppercase letter and one digit.
+    password.value = 'Peyman1927'
 
     const policy = container.querySelector('#privacyPolicy')
     policy.checked = true
