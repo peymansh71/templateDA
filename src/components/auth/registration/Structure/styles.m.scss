@@ -1,0 +1,70 @@
+.section {
+  opacity: 0;
+  overflow: hidden;
+  //transition: opacity 50ms ease-in-out;
+
+  &--active {
+    opacity: 1;
+    overflow: visible;
+    transition: opacity 50ms 250ms ease-in-out;
+  }
+}
+
+.tier {
+  padding: 1rem 1rem 0;
+  border: solid 1px $gray-600;
+  border-radius: 10px 10px 0 0;
+  overflow: hidden;
+  background-color: $gray-400;
+
+  &__subheader {
+    text-align: center;
+    font-size: 12px;
+    color: $gray-700;
+  }
+
+  &__header {
+    text-align: center;
+    font-size: 21px;
+    font-weight: 500;
+    color: $gray-800;
+    margin-bottom: 0.5rem;
+  }
+
+  &__radio {
+    height: 50px;
+    border-radius: 0 0 10px 10px;
+    color: $primary-600;
+    border: solid 1px $primary-600;
+    background-color: $primary-300;
+  }
+
+  &__customRadio {
+    padding-right: 1.75rem;
+    padding-left: 0;
+  }
+
+  &__customInput {
+    right: 0;
+    left: unset;
+  }
+
+  &__customLabel {
+    font-weight: normal;
+    font-size: 13px;
+    &::before,
+    &::after {
+      right: -1.75rem;
+      left: unset;
+    }
+    &::before {
+      background-color: $primary-300;
+      border-color: $primary-600;
+    }
+  }
+}
+
+.prev {
+  color: $gray-700;
+  border-color: $gray-600;
+}

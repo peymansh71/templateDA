@@ -1,0 +1,78 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "extends": [
+    "plugin:react/recommended",
+    "airbnb",
+    "prettier",
+    "prettier/react",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:compat/recommended"
+  ],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaFeatures": {"jsx": true},
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "plugins": ["react", "module-resolver"],
+  "overrides": [
+    {
+      "files": ["**/*.ts", "**/*.tsx"],
+      "rules": {
+        "no-dupe-class-members": "off",
+        "no-undef": "off",
+        "no-array-constructor": "off",
+        "no-use-before-define": "off",
+        "no-unused-vars": "off",
+        "no-unused-expressions": "off",
+        "no-useless-constructor": "off",
+        "import/extensions": ["error", "never"],
+
+        // React rules
+        "react/prop-types": "off",
+        "react/jsx-filename-extension": [
+          2,
+          {"extensions": [".js", ".jsx", ".ts", ".tsx"]}
+        ],
+        "react/jsx-props-no-spreading": "off"
+      }
+    }
+  ],
+  "settings": {
+    "import/resolver": {
+      "babel-module": {}
+    }
+  },
+  "rules": {
+    "module-resolver/use-alias": 2,
+    "no-plusplus": "off",
+    "no-param-reassign": "off",
+    "react/prop-types": "off",
+    "react/jsx-props-no-spreading": "off",
+    "no-restricted-syntax": ["error", "LabeledStatement", "WithStatement"],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": [
+          "./webpack/*.js",
+          "./*.config.js",
+          "**/*.test.js",
+          "**/*.test.jsx"
+        ]
+      }
+    ],
+    "no-underscore-dangle": [2, {"allowAfterThis": true}],
+    "no-shadow": "off",
+    "no-nested-ternary": "off",
+    "camelcase": "off"
+  }
+}

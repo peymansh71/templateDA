@@ -1,0 +1,17 @@
+.section {
+  opacity: 0;
+  overflow: hidden;
+  //transition: opacity 50ms ease-in-out;
+  
+  &--active {
+    opacity: 1;
+  overflow: visible;
+  transition: opacity 50ms 250ms ease-in-out;
+  }
+}
+
+
+.prev {
+  color: $gray-700;
+  border-color: $gray-600;
+}

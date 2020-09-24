@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+.layout {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background-size: cover;
+  overflow-x: hidden;
+  background-image: url('~assets/images/bg/DA-form-bg-image.jpg');
+
+  button:focus {
+    outline: none;
+  }
+
+  &__header {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+  }
+
+  &__logoH {
+    width: 150px;
+  }
+
+  &__logo {
+    width: 30px;
+  }
+
+  &__langs {
+    border: solid 1px var(--white);
+    border-radius: 2px;
+  }
+
+  &__page {
+    width: 100%;
+    margin-top: 80px;
+  }
+
+  &__dropdown {
+    animation-name: none;
+  }
+
+  .accessibility {
+    width: 250px;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+
+    &__label {
+      font-size: 15px;
+      line-height: 20px;
+      font-family: 'Lato';
+    }
+
+    &__switch {
+      > label {
+        &::before {
+          left: -58px;
+          width: 60px;
+          height: 25px;
+          border-radius: 0;
+          background-color: $gray-500;
+          border: $gray-500 solid 1px;
+        }
+
+        &::after {
+          top: calc(-0.01562rem + 2px);
+          left: -56px;
+          width: calc(30px - 4px);
+          height: calc(25px - 4px);
+          background-color: #fff;
+          border-radius: 0;
+        }
+      }
+
+      > input:checked ~ label::after {
+        transform: translateX(29px) !important;
+      }
+    }
+  }
+}
