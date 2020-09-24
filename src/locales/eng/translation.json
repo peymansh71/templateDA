@@ -283,7 +283,7 @@
   "read&agree": "I have read and agree to",
   "country_birth": "Country of Birth",
   "ethnicity_appearance": "Ethnicity & Appearance",
-  "pass_hint": "Eight or more characters, with at least one lowercase and one uppercase letter.",
+  "pass_hint": "Eight or more characters, with at least one digit, one lowercase and one uppercase letter.",
   "registration_type": "type of the registration is not set",
   "registration_whats_next": "Registration. <u>What\"s next?</u>",
   "representing": "representing",
