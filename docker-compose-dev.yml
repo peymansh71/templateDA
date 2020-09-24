@@ -1,0 +1,13 @@
+version: '3.7'
+services:
+  frontend:
+    image: node:14.9.0-alpine3.12
+    command: sh -c "yarn && yarn start"
+    working_dir: /app
+    environment:
+      - PORT=3000
+      - NODE_ENV=production
+    ports:
+      - 80:3000
+    volumes:
+      - .:/app
