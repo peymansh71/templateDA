@@ -10,8 +10,8 @@ import { APIType, API_TYPES } from '../app.config.js'
 
 
 export const HOST_NAMES = {
-  [API_TYPES.PROD]: 'https://snappfood.ir',
-  [API_TYPES.STAGING]: 'https://staging.snappfood.ir',
+  [API_TYPES.PROD]: 'https://diversity.au',
+  [API_TYPES.STAGING]: 'https://diversity.au',
 }
 
 type BodyTypes = 'form' | 'json'
