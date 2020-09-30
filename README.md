@@ -37,6 +37,20 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
+## Use Docker
+
+### Production build
+
+In order to create a production image, the following command is used: `docker build -f ./docker/Dockerfile .`
+
+### Serve production image
+
+In order to serve a production image, the following command is used: `docker-compose up -d --build`
+
+### Serve development
+
+In order to serve in development mode, the following command is used: `docker-compose -f ./docker-compose-dev.yml up -d --build`
+
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
