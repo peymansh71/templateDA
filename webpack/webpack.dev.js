@@ -4,7 +4,7 @@ const WebpackBar = require('webpackbar')
 
 const common = require('./webpack.common.js')
 
-const PORT = 5000
+const PORT = 3000
 
 // eslint-disable-next-line no-console
 console.log(`Project is running at http://localhost:${PORT}`)

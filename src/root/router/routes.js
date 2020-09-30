@@ -1,9 +1,8 @@
-import {lazy, React} from 'react'
+import {lazy} from 'react'
 
 // Layouts
 // const AuthLayout = lazy(() => import('../layouts/AuthLayout'))
 const GuestLayout = lazy(() => import('../layouts/GuestLayout'))
-import {Redirect} from 'react-router-dom'
 
 // Routes
 // const Home = lazy(() => import('~pages/home'))
@@ -16,7 +15,7 @@ const routes = [
     path: '/',
     layout: GuestLayout,
     protected: false,
-    component: () => <Redirect to='/login' />,
+    component: Registration,
   },
   {
     path: '/registration',
