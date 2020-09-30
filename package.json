@@ -4,12 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --config ./webpack/webpack.dev.js --hot",
+    "start": "webpack-dev-server --config ./webpack/webpack.dev.js --hot --host 0.0.0.0",
     "build": "cross-env NODE_ENV=production webpack -p --config ./webpack/webpack.prod.js",
-    "lint:eslint": "eslint . && echo \"No lint errors!\" && exit 0",
-    "lint:eslint:fix": "eslint . --fix && echo \"Lint errors fixed!\" && exit 0",
-    "format": "prettier \"**/*.{md,mdx,yml,css,scss} \" --write",
     "test": "jest",
+    "lint:eslint": "eslint .",
+    "lint:eslint:fix": "eslint . --fix",
+    "format": "prettier \"**/*.{md,mdx,yml,css,scss} \" --write",
     "analyze": "cross-env NODE_ENV=production ANALYZE=true webpack -p --config ./webpack/webpack.prod.js"
   },
   "husky": {

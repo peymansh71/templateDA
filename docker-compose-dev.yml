@@ -5,8 +5,8 @@ services:
     command: sh -c "yarn && yarn start"
     working_dir: /app
     environment:
-      - PORT=3000
+      - PORT=8082
     ports:
-      - 80:3000
+      - 8082:8082
     volumes:
       - .:/app
