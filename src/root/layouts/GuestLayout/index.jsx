@@ -18,7 +18,7 @@ import LanguageDropdown from '~components/common/LanguageDropdown'
 
 // assets
 import logo from '~assets/images/logo/AA_logo_icon_white.png'
-import logoHorizontal from '~assets/images/logo/AA_logo_black_horizontal.png'
+import logoHorizontal from '~assets/images/logo/DA-logo-white.svg'
 
 import s from './styles.m.scss'
 

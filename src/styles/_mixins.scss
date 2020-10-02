@@ -1,0 +1,164 @@
+// some usefull mixins that you may OR may not need
+
+// Linear gradinetngradient
+@mixin linearGradient($from, $to, $stop: 100%) {
+  /* fallback/image non-cover color */
+  background-color: $from;
+  background-image: -moz-linear-gradient(
+    left,
+    $from 0%,
+    $to $stop
+  ); /* Firefox 3.6+ */
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    right top,
+    color-stop(0%, $from),
+    color-stop($stop, $to)
+  ); /* Safari 4+, Chrome 1+ */
+  background-image: -webkit-linear-gradient(
+    left,
+    $from 0%,
+    $to $stop
+  ); /* Safari 5.1+, Chrome 10+ */
+  background-image: -o-linear-gradient(
+    left,
+    $from 0%,
+    $to $stop
+  ); /* Opera 11.10+ */
+  background: -ms-linear-gradient(left, $from 0%, $to $stop); /* IE10+ */
+  background: linear-gradient(to right, $from 0%, $to $stop); /* Standard */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$from', endColorstr='$to',GradientType=1 ); /* IE6-9 */
+}
+
+// Fit windows
+@mixin fitWindow {
+  width: 100%;
+  height: 100vh;
+}
+
+// Make Center
+@mixin makeCenter($align, $justify, $direction) {
+  display: flex;
+  align-items: $align;
+  justify-content: $justify;
+  flex-direction: $direction;
+}
+
+@mixin easeTransition($time) {
+  transition: all $time ease-in-out;
+}
+
+@mixin breakpoint($class) {
+  @if $class==xs {
+    @media (max-width: 425px) {
+      @content;
+    }
+  } @else if $class==sm {
+    @media (max-width: 576px) {
+      @content;
+    }
+  } @else if $class==md {
+    @media (max-width: 768px) {
+      @content;
+    }
+  } @else if $class==lg {
+    @media (max-width: 992px) {
+      @content;
+    }
+  } @else if $class==xl {
+    @media (max-width: 1200px) {
+      @content;
+    }
+  } @else {
+    @warn "Breakpoint mixin supports: xs, sm, md, lg, xl";
+  }
+}
+
+@mixin border-radius(
+  $top-left: 10px,
+  $top-right: null,
+  $bottom-right: null,
+  $bottom-left: null
+) {
+  -webkit-border-radius: $top-left $top-right $bottom-right $bottom-left;
+  -moz-border-radius: $top-left $top-right $bottom-right $bottom-left;
+  -ms-border-radius: $top-left $top-right $bottom-right $bottom-left;
+  border-radius: $top-left $top-right $bottom-right $bottom-left;
+}
+
+@mixin transition($property: all, $duration: 0.3s, $ease: linear) {
+  -webkit-transition: $property $duration $ease;
+  -moz-transition: $property $duration $ease;
+  -o-transition: $property $duration $ease;
+  transition: $property $duration $ease;
+}
+
+@mixin box-shadow($left, $top, $radius, $color) {
+  box-shadow: $left $top $radius $color;
+  -webkit-box-shadow: $left $top $radius $color;
+  -moz-box-shadow: $left $top $radius $color;
+}
+
+@mixin gradient($color1, $color2) {
+  background-color: $color1;
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#{$color1}, endColorstr=#{$color2});
+  background-image: -moz-linear-gradient(center top, $color1, $color2);
+  background-image: -webkit-gradient(
+    linear,
+    0% 0%,
+    0% 100%,
+    from($color1),
+    to($color2)
+  );
+}
+
+// ----
+// libsass (v3.2.5)
+// ----
+
+// margin and padding values array
+$space-values: (
+  0,
+  3,
+  5,
+  10,
+  15,
+  20,
+  25,
+  30,
+  35,
+  40,
+  45,
+  50,
+  60,
+  70,
+  80,
+  90
+) !default;
+
+// margin and padding shorthands
+$space-prefixes: (
+  p: padding,
+  pt: padding-top,
+  pr: padding-right,
+  pb: padding-bottom,
+  pl: padding-left,
+  m: margin,
+  mt: margin-top,
+  mr: margin-right,
+  mb: margin-bottom,
+  ml: margin-left,
+) !default;
+
+@mixin make-spaces() {
+  @each $attr-short, $attr-long in $space-prefixes {
+    @each $value in $space-values {
+      .#{$attr-short}-#{$value} {
+        #{$attr-long}: #{$value}#{'px'};
+      }
+    }
+  }
+}
+
+@include make-spaces();

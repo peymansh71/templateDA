@@ -1,36 +1,59 @@
 .login {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include makeCenter(center, center, row);
+
+  margin: 0 1.25rem;
   > * {
     flex: 0 0 100%;
   }
 
+  &__card {
+    padding: 1.37rem 1.55rem 1rem;
+    border-radius: 10px;
+  }
+
   &__logo {
-    height: 35px;
+    @include makeCenter(unset, center, row);
+    margin-bottom: 3.12rem;
+    img {
+      height: 2.18rem;
+    }
   }
 
   &__input {
-    margin-bottom: 20px;
+    margin-bottom: 1.25rem;
   }
 
   &__submit {
-    font-size: 13px;
+    font-size: 0.8rem;
     font-weight: 500;
     padding: 0.75rem 0;
     margin-bottom: 0.5rem;
+    height: 2.5rem;
+    @include makeCenter(center, center, row);
+    border-radius: 3px;
   }
 
   &__divider {
-    margin-top: 45px;
+    margin-top: 2.5rem;
   }
 
   &__links {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    > * {
-      flex: 0 0 100%;
+    @include makeCenter(unset, space-between, row);
+  }
+
+  &_contact {
+    @include makeCenter(unset, center, row);
+  }
+}
+
+@media (max-width: 576px) {
+  .login {
+    &__links {
+      flex-direction: column;
+
+      a {
+        margin-bottom: 8px;
+      }
     }
   }
 }
@@ -39,13 +62,6 @@
   .login {
     > * {
       flex: 0 0 450px;
-    }
-
-    &__links {
-      flex-wrap: nowrap;
-      > * {
-        flex: 1 1 auto;
-      }
     }
   }
 }
