@@ -52,9 +52,9 @@ const Login = () => {
         <title>Diversity Atlas|Login</title>
       </Helmet>
       <div className={s.login}>
-        <Card className='px-4 pt-4 pb-3'>
-          <div className='d-flex justify-content-center mb-4'>
-            <img alt='diversity-logo' src={logo} className={s.login__logo} />
+        <Card className={s.login__card}>
+          <div className={s.login__logo}>
+            <img alt='diversity-logo' src={logo} />
           </div>
           <form ref={formRef}>
             <FormInput
@@ -82,12 +82,14 @@ const Login = () => {
             <div className={s.login__links}>
               <Link to='/forgot-password'>{t('forget_password')}</Link>
               <div>
-                <span>{t('i_dont_have_an_account')}</span>
-                <Link to='/registration'> {t('register')}.</Link>
+                <span>
+                  {t('i_dont_have_an_account')}{' '}
+                  <Link to='/registration'> {t('register')}.</Link>
+                </span>
               </div>
             </div>
             <hr className={s.login__divider} />
-            <div className='d-flex justify-content-center'>
+            <div className={s.login_contact}>
               <Link to='/contact-us'>{t('contact_us')}</Link>
             </div>
           </form>

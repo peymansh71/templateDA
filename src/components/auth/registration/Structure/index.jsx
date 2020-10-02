@@ -124,7 +124,7 @@ export const Structure = ({goNext, goPrev, setHeight, isActive}) => {
                     />
                     <label
                       className={`${s.tier__customLabel} custom-control-label`}
-                      htmlFor={`tires${item.id + 1}`}
+                      htmlFor={`tiers${item.id}`}
                     >
                       {t('Choose_plan')}
                     </label>
