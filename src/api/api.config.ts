@@ -6,12 +6,11 @@ import {
   AxiosError,
 } from 'axios'
 
-import { APIType, API_TYPES } from '../app.config.js'
-
+import {APIType, API_TYPES} from '../app.config.js'
 
 export const HOST_NAMES = {
-  [API_TYPES.PROD]: 'https://diversity.au',
-  [API_TYPES.STAGING]: 'https://diversity.au',
+  [API_TYPES.PROD]: 'https://app.diversityatlas.com.au/',
+  [API_TYPES.STAGING]: 'http://app-dev.diversityatlas.com.au/',
 }
 
 type BodyTypes = 'form' | 'json'
