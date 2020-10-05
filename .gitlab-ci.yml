@@ -39,8 +39,8 @@ deploy:
     - 'which ssh-agent || ( apk install -qq openssh-client )'
     - eval $(ssh-agent -s)
     - mkdir -p ~/.ssh && chmod 700 ~/.ssh
-    # - echo "$DEPLOY_DEV_KEY" > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa
-    - SSH_ASKPASS="$SSH_DEV_PASSPHRASE" ssh-add <(echo "$DEPLOY_DEV_KEY")
+    - echo "$SSH_DEV_KEY" > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa
+    - echo "$SSH_DEV_KEY" | tr -d '\r' | ssh-add - > /dev/null
     - ssh -o "StrictHostKeyChecking=no" ubuntu@app-dev.diversityatlas.com.au -p 22 " &&
         cd /var/app/da-app/ &&
         sudo docker-compose down -v &&
