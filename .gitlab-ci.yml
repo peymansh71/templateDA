@@ -47,3 +47,8 @@ deploy:
   tags:
     - deploy
   when: manual
+  environment:
+    name: develop
+    url: http://app-dev.diversityatlas.com.au/
+  only:
+  - develop
