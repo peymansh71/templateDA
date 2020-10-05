@@ -48,7 +48,6 @@ deploy:
       # - docker run -p 80:80 -d --name da_front "$CI_REGISTRY_IMAGE"
   tags:
     - deploy
-  when: manual
   environment:
     name: develop
     url: http://app-dev.diversityatlas.com.au/
