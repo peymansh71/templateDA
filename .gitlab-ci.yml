@@ -42,7 +42,7 @@ deploy:
     - echo "$DEPLOY_STAGING_KEY" > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa
     - echo "$DEPLOY_STAGING_KEY" | tr -d '\r' | ssh-add - > /dev/null
     - echo "I'm here"
-    - ssh -o "StrictHostKeyChecking=no" ubuntu@app-dev.diversityatlas.com.au -p 22 " &&
+    - ssh -o "StrictHostKeyChecking=no" ubuntu@app-dev.diversityatlas.com.au -p 22 "
         cd /var/app/da-app/ &&
         sudo docker-compose down -v &&
         sudo docker-compose up -d --build "
