@@ -40,7 +40,7 @@ deploy:
     - eval $(ssh-agent -s)
     - mkdir -p ~/.ssh && chmod 700 ~/.ssh
     - echo "$DEPLOY_DEV_KEY" > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa
-    - echo "$DEPLOY_DEV_PASSPHRASE" | ssh-add -p ~/.ssh/id_rsa
+    - echo "$DEPLOY_DEV_PASSPHRASE" | ssh-add ~/.ssh/id_rsa
     - ssh -o "StrictHostKeyChecking=no" ubuntu@app-dev.diversityatlas.com.au -p 22 " &&
         cd /var/app/da-app/ &&
         sudo docker-compose down -v &&
