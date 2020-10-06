@@ -3,7 +3,6 @@ services:
   frontend:
     build:
       context: .
-      dockerfile: ./docker/Dockerfile
     environment:
       - PORT=80
       - NODE_ENV=production
